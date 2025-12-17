@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Configurações Robô Scalper H.A - Guia Completo</title>
+    <title>Scalper Pro 1.10 - Robô de Trading Automático Premium</title>
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #6a11cb;
-            --secondary: #2575fc;
-            --success: #00b09b;
-            --warning: #f7971e;
-            --danger: #ff416c;
-            --dark: #2c3e50;
-            --light: #f8f9fa;
-            --gray: #6c757d;
+            --primary-dark: #0a1128;
+            --primary-blue: #1a237e;
+            --accent-gold: #FFD700;
+            --accent-cyan: #00e5ff;
+            --accent-green: #00c853;
+            --accent-red: #ff5252;
+            --text-light: #ffffff;
+            --text-gray: #b0bec5;
+            --card-bg: rgba(20, 30, 60, 0.9);
+            --gradient-primary: linear-gradient(135deg, #0a1128 0%, #1a237e 100%);
+            --gradient-accent: linear-gradient(135deg, #FFD700 0%, #00e5ff 100%);
+            --gradient-gold: linear-gradient(135deg, #FFD700 0%, #FF6B00 100%);
         }
         
         * {
@@ -23,932 +33,1305 @@
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--primary-dark);
+            color: var(--text-light) !important;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(26, 35, 126, 0.3) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.2) 0%, transparent 40%),
+                linear-gradient(to bottom, rgba(10, 17, 40, 0.9), rgba(10, 17, 40, 1));
             min-height: 100vh;
+            overflow-x: hidden;
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
+        /* FORÇAR TODAS AS CORES DE TEXTO PARA CLARO */
+        body,
+        h1, h2, h3, h4, h5, h6,
+        p, span, div,
+        .navbar-brand,
+        .nav-link,
+        .card,
+        .card-header,
+        .card-body,
+        .card-text,
+        .list-unstyled li,
+        .feature-list li,
+        .text-muted,
+        small,
+        .lead,
+        .btn,
+        .form-control,
+        .form-label,
+        .table,
+        .table th,
+        .table td {
+            color: var(--text-light) !important;
         }
         
-        .header {
-            text-align: center;
-            padding: 40px 20px;
-            color: white;
-            margin-bottom: 30px;
+        .navbar-brand, h1, h2, h3, h4, h5, .navbar-brand {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
         
-        .header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .navbar {
+            background: rgba(10, 17, 40, 0.98);
+            backdrop-filter: blur(15px);
+            border-bottom: 2px solid var(--accent-gold);
+            padding: 1rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
         
-        .header p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
+        .hero-section {
+            background: var(--gradient-primary);
+            padding: 8rem 0 5rem;
+            position: relative;
+            overflow: hidden;
         }
         
-        .nav-menu {
-            background: white;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 70% 30%, rgba(255, 215, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 30% 70%, rgba(0, 229, 255, 0.1) 0%, transparent 50%);
         }
         
-        .nav-links {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            justify-content: center;
-            list-style: none;
+        .hero-title {
+            font-size: 4rem;
+            font-weight: 900;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+            margin-bottom: 1.5rem;
+            animation: glow 2s ease-in-out infinite alternate;
         }
         
-        .nav-links a {
-            text-decoration: none;
-            padding: 10px 20px;
-            background: var(--light);
-            border-radius: 50px;
-            color: var(--dark);
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 30px rgba(255, 215, 0, 0.2);
+            }
         }
         
-        .nav-links a:hover {
-            background: var(--primary);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(106, 17, 203, 0.2);
+        .gold-text {
+            color: var(--accent-gold) !important;
+            font-weight: bold;
         }
         
-        .section {
-            background: white;
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 215, 0, 0.2);
             border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            border-left: 5px solid var(--primary);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
         }
         
-        .section h2 {
-            color: var(--primary);
-            margin-bottom: 25px;
-            font-size: 1.8rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-gold);
+            transition: left 0.4s ease;
         }
         
-        .section h2 i {
-            font-size: 1.5rem;
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(255, 215, 0, 0.15);
+            border-color: rgba(255, 215, 0, 0.4);
         }
         
-        .config-card {
-            background: var(--light);
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border: 1px solid #e9ecef;
-            transition: transform 0.3s ease;
+        .card:hover::before {
+            left: 0;
         }
         
-        .config-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        .card-header {
+            background: rgba(255, 215, 0, 0.08);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            padding: 1.2rem 1.5rem;
         }
         
-        .config-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 15px;
-            flex-wrap: wrap;
-            gap: 10px;
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
         
-        .config-name {
-            font-weight: 600;
-            font-size: 1.1rem;
-            color: var(--dark);
-        }
-        
-        .config-type {
-            padding: 5px 15px;
-            border-radius: 20px;
+        .benefit-badge {
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--accent-gold) !important;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 25px;
+            padding: 0.5rem 1.2rem;
             font-size: 0.9rem;
-            font-weight: 500;
-        }
-        
-        .type-number { background: #e3f2fd; color: #1565c0; }
-        .type-string { background: #f3e5f5; color: #7b1fa2; }
-        .type-bool { background: #e8f5e9; color: #2e7d32; }
-        .type-double { background: #fff3e0; color: #ef6c00; }
-        
-        .config-details {
-            margin-top: 15px;
-        }
-        
-        .detail-item {
-            margin-bottom: 12px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        
-        .detail-label {
-            font-weight: 600;
-            color: var(--dark);
-            min-width: 120px;
-        }
-        
-        .tip-box {
-            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
-            border-left: 4px solid var(--warning);
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-        }
-        
-        .tip-box h4 {
-            color: var(--warning);
-            margin-bottom: 5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .tip-box p {
-            color: #666;
-        }
-        
-        .usage-example {
-            background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
-            border-left: 4px solid #00bcd4;
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-family: 'Courier New', monospace;
-        }
-        
-        .value-range {
-            background: var(--light);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            color: var(--gray);
-        }
-        
-        .status-badge {
+            margin: 0.3rem;
             display: inline-block;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 500;
-            margin: 5px 5px 5px 0;
+            transition: all 0.3s ease;
         }
         
-        .status-active { background: #d4edda; color: #155724; }
-        .status-inactive { background: #f8d7da; color: #721c24; }
-        .status-recommended { background: #d1ecf1; color: #0c5460; }
-        .status-advanced { background: #fff3cd; color: #856404; }
+        .benefit-badge:hover {
+            background: rgba(255, 215, 0, 0.2);
+            transform: scale(1.05);
+        }
         
-        .footer {
+        .nav-link {
+            transition: all 0.3s ease;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            margin: 0 0.2rem;
+            border-radius: 5px;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-gold) !important;
+            background: rgba(255, 215, 0, 0.1);
+        }
+        
+        .section-title {
+            position: relative;
+            padding-bottom: 1rem;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 120px;
+            height: 4px;
+            background: var(--gradient-gold);
+            border-radius: 2px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 229, 255, 0.1));
+            border-left: 4px solid var(--accent-gold);
+            padding: 1.5rem;
+            border-radius: 0 10px 10px 0;
+            margin: 1.5rem 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .profit-badge {
+            background: rgba(0, 200, 83, 0.2);
+            color: var(--accent-green) !important;
+            border: 1px solid var(--accent-green);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .risk-badge {
+            background: rgba(255, 82, 82, 0.2);
+            color: var(--accent-red) !important;
+            border: 1px solid var(--accent-red);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        .cta-button {
+            background: var(--gradient-gold);
+            border: none;
+            color: #000 !important;
+            font-weight: 700;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.4);
+            color: #000 !important;
+        }
+        
+        .testimonial-card {
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 1rem;
+            background: rgba(20, 30, 60, 0.7);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--accent-gold);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+        }
+        
+        .stats-number {
+            font-size: 3rem;
+            font-weight: 900;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+        }
+        
+        .stats-label {
+            color: var(--text-gray) !important;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        footer {
+            background: rgba(10, 17, 40, 0.95);
+            border-top: 2px solid rgba(255, 215, 0, 0.2);
+            margin-top: 6rem;
+            padding: 3rem 0;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--gradient-gold);
+        }
+        
+        .guarantee-badge {
+            background: rgba(255, 215, 0, 0.1);
+            border: 2px dashed var(--accent-gold);
+            border-radius: 10px;
+            padding: 1.5rem;
             text-align: center;
-            padding: 30px 20px;
-            color: white;
-            margin-top: 40px;
+            margin: 2rem 0;
+        }
+        
+        .feature-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+        
+        .feature-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-gold);
+            font-weight: bold;
+        }
+        
+        .text-muted {
+            color: var(--text-gray) !important;
+        }
+        
+        .btn-outline-warning {
+            border-color: var(--accent-gold) !important;
+            color: var(--accent-gold) !important;
+        }
+        
+        .btn-outline-warning:hover {
+            background-color: rgba(255, 215, 0, 0.1) !important;
+            color: var(--accent-gold) !important;
+        }
+        
+        .form-control {
+            background-color: rgba(255, 255, 255, 0.1) !important;
+            border-color: rgba(255, 215, 0, 0.3) !important;
+            color: var(--text-light) !important;
+        }
+        
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.5) !important;
+        }
+        
+        .table {
+            background-color: transparent !important;
+        }
+        
+        .table th {
+            background-color: rgba(255, 215, 0, 0.1) !important;
+            border-color: rgba(255, 215, 0, 0.2) !important;
+        }
+        
+        .table td {
+            border-color: rgba(255, 215, 0, 0.1) !important;
+        }
+        
+        .alert {
+            background-color: rgba(255, 215, 0, 0.1) !important;
+            border-color: rgba(255, 215, 0, 0.3) !important;
+            color: var(--text-light) !important;
+        }
+        
+        .list-group-item {
+            background-color: transparent !important;
+            border-color: rgba(255, 215, 0, 0.2) !important;
+        }
+        
+        .modal-content {
+            background-color: var(--card-bg) !important;
+            border: 1px solid rgba(255, 215, 0, 0.2) !important;
+        }
+        
+        .modal-header, .modal-footer {
+            border-color: rgba(255, 215, 0, 0.2) !important;
+        }
+        
+        .text-success {
+            color: var(--accent-green) !important;
+        }
+        
+        .text-warning {
+            color: var(--accent-gold) !important;
+        }
+        
+        .text-info {
+            color: var(--accent-cyan) !important;
+        }
+        
+        .text-danger {
+            color: var(--accent-red) !important;
+        }
+        
+        .badge {
+            color: var(--text-light) !important;
+        }
+        
+        .bg-success {
+            background-color: rgba(0, 200, 83, 0.2) !important;
+        }
+        
+        .bg-warning {
+            background-color: rgba(255, 215, 0, 0.2) !important;
+        }
+        
+        .bg-info {
+            background-color: rgba(0, 229, 255, 0.2) !important;
+        }
+        
+        .bg-danger {
+            background-color: rgba(255, 82, 82, 0.2) !important;
         }
         
         @media (max-width: 768px) {
-            .container {
-                padding: 10px;
+            .hero-title {
+                font-size: 2.5rem;
             }
             
-            .header h1 {
+            .hero-section {
+                padding: 6rem 0 3rem;
+            }
+            
+            .section-title {
                 font-size: 2rem;
             }
             
-            .nav-links {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .nav-links a {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .section {
-                padding: 20px;
-            }
-            
-            .config-header {
-                flex-direction: column;
-                align-items: flex-start;
+            .stats-number {
+                font-size: 2.5rem;
             }
         }
-        
-        /* Ícones */
-        .icon {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-            text-align: center;
-            line-height: 24px;
-            border-radius: 50%;
-            margin-right: 10px;
-        }
-        
-        .icon-entry { background: var(--success); color: white; }
-        .icon-protection { background: var(--danger); color: white; }
-        .icon-filter { background: var(--warning); color: white; }
-        .icon-stop { background: var(--secondary); color: white; }
-        .icon-dashboard { background: #9c27b0; color: white; }
-        .icon-general { background: var(--gray); color: white; }
     </style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
-    <div class="container">
-        <header class="header">
-            <h1>Robô Scalper H.A - Guia de Configurações</h1>
-            <p>Configurações otimizadas para operações de scalping com proteções avançadas e filtros inteligentes</p>
-        </header>
-        
-        <nav class="nav-menu">
-            <ul class="nav-links">
-                <li><a href="#entrada">Entrada e Saída</a></li>
-                <li><a href="#filtros">Filtros de Entrada</a></li>
-                <li><a href="#protecoes">Proteções</a></li>
-                <li><a href="#stops">Stop Gain/Loss</a></li>
-                <li><a href="#geral">Controles Gerais</a></li>
-                <li><a href="#dashboard">Dashboard</a></li>
-            </ul>
-        </nav>
-        
-        <!-- SEÇÃO: ENTRADA E SAÍDA -->
-        <section id="entrada" class="section">
-            <h2><i class="fas fa-door-open icon icon-entry"></i> Entrada e Saída</h2>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Símbolo (Par)</span>
-                    <span class="config-type type-string">string</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Par de moedas ou ativo para operar</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Valor Padrão:</span>
-                        <span>"XAUUSD"</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Quando Usar:</span>
-                        <span>Defina o ativo principal para o robô operar</span>
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-lightbulb"></i> Dica Importante</h4>
-                        <p>Use pares com boa liquidez e baixo spread. XAUUSD (Ouro) é recomendado por sua volatilidade adequada para scalping.</p>
-                    </div>
-                </div>
+<body data-bs-spy="scroll" data-bs-target="#navbar-main" data-bs-offset="100">
+    <!-- Navbar -->
+    <nav id="navbar-main" class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-robot me-2 gold-text"></i><span class="gold-text">SCALPER PRO 1.10</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#inicio">Início</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#beneficios">Benefícios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#funcionamento">Como Funciona</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#configuracoes">Configurações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resultados">Resultados</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
             </div>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Volume Inicial</span>
-                    <span class="config-type type-double">double</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Volume da primeira entrada em lote</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Valor Padrão:</span>
-                        <span>0.01</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Quando Usar:</span>
-                        <span>Configure baseado no seu capital e risco</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Valores Recomendados:</span>
-                        <div class="value-range">0.01 - 1.00 (ajuste conforme capital)</div>
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-chart-line"></i> Gerenciamento de Risco</h4>
-                        <p>Para contas de $1000, recomenda-se 0.01-0.03 lotes. Nunca use mais de 2% do capital por operação.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Take Profit (pontos)</span>
-                    <span class="config-type type-number">int</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Distância em pontos para o Take Profit</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Valor Padrão:</span>
-                        <span>25</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Quando Usar:</span>
-                        <span>Defina o alvo de lucro para operações de scalping</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Valores Recomendados:</span>
-                        <div class="value-range">15-40 pontos para scalping</div>
-                    </div>
-                    <div class="usage-example">
-                        <strong>Exemplo:</strong> 25 pontos no XAUUSD = $2.50 por 0.01 lote
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- SEÇÃO: FILTROS DE ENTRADA -->
-        <section id="filtros" class="section">
-            <h2><i class="fas fa-filter icon icon-filter"></i> Filtros de Entrada Inteligentes</h2>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Ativar Filtro Range Adaptativo</span>
-                    <span class="config-type type-bool">bool</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Status:</span>
-                        <span class="status-badge status-active">RECOMENDADO ATIVADO</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Filtro baseado em volatilidade que evita entradas em mercados sem tendência</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Porque Ativar:</span>
-                        <span>Reduz operações em ranging markets e aumenta probabilidade de acerto</span>
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-cogs"></i> Funcionamento</h4>
-                        <p>O filtro calcula a volatilidade média e só permite entrada quando há tendência clara definida por múltiplos candles consecutivos.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Ativar Filtro de Volume</span>
-                    <span class="config-type type-bool">bool</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Status:</span>
-                        <span class="status-badge status-recommended">RECOMENDADO</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Analisa a dominância de volume de compra vs venda</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Quando Ativar:</span>
-                        <span>Ative para operar apenas com fluxo de compra dominante (ideal para tendência de alta)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Limiar Volume Compra:</span>
-                        <span>70% - Só entra se 70%+ do volume for de compra</span>
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-chart-bar"></i> Dica de Uso</h4>
-                        <p>Use 0.7-0.8 (70-80%) para filtro mais restrito. Para mercados mais voláteis, use 0.6-0.7.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Ativar Filtro RSI</span>
-                    <span class="config-type type-bool">bool</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Status:</span>
-                        <span class="status-badge status-recommended">RECOMENDADO</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Evita entrada quando o mercado está sobrecomprado (RSI alto)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Quando Ativar:</span>
-                        <span>Sempre ativo para evitar compras no topo</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">RSI Overbought:</span>
-                        <span>75 - Não entra se RSI > 75 (ajuste para 70-80)</span>
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-exchange-alt"></i> Estratégia</h4>
-                        <p>Com RSI > 75, há alta probabilidade de reversão. Este filtro evita entrada em momentos de exaustão de compra.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- SEÇÃO: PROTEÇÕES -->
-        <section id="protecoes" class="section">
-            <h2><i class="fas fa-shield-alt icon icon-protection"></i> Sistema de Proteções</h2>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Ativar Proteções</span>
-                    <span class="config-type type-bool">bool</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Status:</span>
-                        <span class="status-badge status-active">ESSENCIAL ATIVAR</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Sistema anti-loss que adiciona posições em preços mais baixos para reduzir preço médio</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Porque Ativar:</span>
-                        <span>Reduz prejuízos e aumenta chances de operação voltar ao lucro</span>
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-life-ring"></i> Como Funciona</h4>
-                        <p>Quando a operação vai contra você, o robô abre novas posições em níveis pré-definidos para baixar o preço médio e reduzir o ponto de equilíbrio.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Distâncias das Proteções</span>
-                    <span class="config-type type-string">string</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Pontos de distância da entrada para cada nível de proteção</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Formato:</span>
-                        <span>Lista separada por vírgulas (ex: "210, 350, 420")</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Configuração Recomendada:</span>
-                        <span>Use distâncias progressivas maiores (ex: 200, 350, 550, 800)</span>
-                    </div>
-                    <div class="usage-example">
-                        <strong>Exemplo Otimizado:</strong> "200, 350, 550, 800, 1100, 1450, 1850, 2300"
-                    </div>
-                </div>
-            </div>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Volumes das Proteções</span>
-                    <span class="config-type type-string">string</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Volumes para cada nível de proteção (pode aumentar progressivamente)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Estratégia:</span>
-                        <span>Comece com volume igual e aumente gradualmente</span>
-                    </div>
-                    <div class="usage-example">
-                        <strong>Exemplo Conservador:</strong> "0.01,0.01,0.02,0.03,0.05,0.08,0.13,0.21"<br>
-                        <strong>Exemplo Agressivo:</strong> "0.01,0.02,0.04,0.08,0.16,0.32,0.64,1.28"
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-balance-scale"></i> Gerenciamento de Volume</h4>
-                        <p>Use sequência de Fibonacci (0.01, 0.01, 0.02, 0.03, 0.05...) para aumento controlado. Nunca ultrapasse seu limite de margem!</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Máximo de Proteções</span>
-                    <span class="config-type type-number">int</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Número máximo de proteções antes de parar o sistema</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Recomendação:</span>
-                        <span>5-8 proteções (depende do capital e risco)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Porque Limitar:</span>
-                        <span>Evita acumulação excessiva de posições e protege o capital</span>
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-exclamation-triangle"></i> Alerta Importante</h4>
-                        <p>Defina um limite que seu capital suporta. Após atingir o máximo, o robô aguarda o stop loss ou espera a operação se recuperar.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- SEÇÃO: STOP GAIN/LOSS -->
-        <section id="stops" class="section">
-            <h2><i class="fas fa-stop-circle icon icon-stop"></i> Stop Gain & Stop Loss</h2>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Stop Gain (USC)</span>
-                    <span class="config-type type-double">double</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Lucro máximo diário em US Cents (100 USC = $1)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Exemplo:</span>
-                        <span>5000 USC = $50 de lucro diário</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Quando Usar:</span>
-                        <span>Ative sempre para proteger lucros e evitar greed</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Valores Recomendados:</span>
-                        <div class="value-range">2000-10000 USC ($20-$100)</div>
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-trophy"></i> Psicologia do Trader</h4>
-                        <p>Defina um stop gain realista baseado em 2-5% do capital diário. Ao atingir, pare e comece novo no dia seguinte.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Stop Loss (USC)</span>
-                    <span class="config-type type-double">double</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Prejuízo máximo diário em US Cents</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Recomendação:</span>
-                        <span>½ a ⅓ do Stop Gain (ex: Gain 5000, Loss 1500-2500)</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Porque Usar:</span>
-                        <span>Protege capital em dias ruins e força disciplina</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Valores Recomendados:</span>
-                        <div class="value-range">1000-3000 USC ($10-$30)</div>
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-user-shield"></i> Proteção de Capital</h4>
-                        <p>Nunca opere sem stop loss! Limite máximo: 5% do capital. Se atingir, pare e analise o que deu errado.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Stop Loss por Pontos</span>
-                    <span class="config-type type-bool">bool</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Status:</span>
-                        <span class="status-badge status-recommended">RECOMENDADO ATIVAR</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Stop loss técnico baseado em distância em pontos</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Quando Usar:</span>
-                        <span>Sempre ative como proteção adicional ao stop loss em USC</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Distância Recomendada:</span>
-                        <span>80-120 pontos (2-4x o Take Profit)</span>
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-crosshairs"></i> Estratégia de SL</h4>
-                        <p>O SL por pontos fecha a operação técnica, o SL em USC fecha por capital. Use ambos para proteção completa.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Trailing Stop</span>
-                    <span class="config-type type-bool">bool</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Status:</span>
-                        <span class="status-badge status-advanced">AVANÇADO</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Move o stop loss acompanhando o preço quando em lucro</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Quando Usar:</span>
-                        <span>Para proteger lucros em operações que vão muito a favor</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Configuração:</span>
-                        <span>Inicia após 50+ pontos de lucro, move a cada 20 pontos</span>
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-chart-line"></i> Maximizando Lucros</h4>
-                        <p>Com trailing, você "trava" lucros progressivamente. Ex: Entrou a 1800, SL 1750, se sobe para 1820, SL sobe para 1770.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- SEÇÃO: CONTROLES GERAIS -->
-        <section id="geral" class="section">
-            <h2><i class="fas fa-sliders-h icon icon-general"></i> Controles Gerais</h2>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Filtro Horário</span>
-                    <span class="config-type type-bool">bool</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Status:</span>
-                        <span class="status-badge status-recommended">RECOMENDADO ATIVAR</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Bloqueia operações em horários de baixa liquidez ou notícias</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Porque Usar:</span>
-                        <span>Evita operar durante releases importantes ou mercados finos</span>
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-clock"></i> Horários Recomendados</h4>
-                        <p>Para XAUUSD: Evite 12:50-14:10 (horário de Londres fechando/NY abrindo). Ajuste conforme seu fuso horário.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Tempo entre Entradas</span>
-                    <span class="config-type type-number">int</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Segundos de espera entre uma operação e outra</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Porque Usar:</span>
-                        <span>Evita sobre-operação e dá tempo para análise</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Valores Recomendados:</span>
-                        <div class="value-range">10-60 segundos</div>
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-hourglass-half"></i> Paciência é Virtude</h4>
-                        <p>Mínimo 10 segundos para evitar múltiplas entradas no mesmo movimento. Scalping de qualidade exige paciência!</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Mensagens Detalhadas</span>
-                    <span class="config-type type-bool">bool</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Status:</span>
-                        <span class="status-badge status-active">ATIVAR PARA APRENDER</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Mostra logs detalhados no Expert Advisor</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Quando Usar:</span>
-                        <span>Sempre ativo para monitorar o robô. Desative apenas se causar lentidão</span>
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-info-circle"></i> Monitoramento</h4>
-                        <p>Com logs ativados você vê cada decisão do robô: "Filtro RSI ativado", "Proteção 2 aberta", etc. Essencial para debugging.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- SEÇÃO: DASHBOARD -->
-        <section id="dashboard" class="section">
-            <h2><i class="fas fa-tachometer-alt icon icon-dashboard"></i> Dashboard Profissional</h2>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Ativar Dashboard</span>
-                    <span class="config-type type-bool">bool</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Status:</span>
-                        <span class="status-badge status-active">RECOMENDADO ATIVAR</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Interface visual com estatísticas em tempo real</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Porque Ativar:</span>
-                        <span>Monitoramento profissional sem abrir terminal</span>
-                    </div>
-                    <div class="tip-box">
-                        <h4><i class="fas fa-eye"></i> Visibilidade Total</h4>
-                        <p>O dashboard mostra: lucro/perda diário, trades vencedores/perdedores, volume atual, posições abertas e status do robô.</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="config-card">
-                <div class="config-header">
-                    <span class="config-name">Mostrar Posições Abertas</span>
-                    <span class="config-type type-bool">bool</span>
-                </div>
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Status:</span>
-                        <span class="status-badge status-active">ATIVAR</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Descrição:</span>
-                        <span>Mostra tabela com todas as posições abertas no dashboard</span>
-                    </div>
-                    <div class="detail-item">
-                        <span class="detail-label">Porque Ativar:</span>
-                        <span>Controle total sobre cada posição (ticket, tipo, volume)</span>
-                    </div>
-                    <div class="usage-example">
-                        <strong>Exemplo no Dashboard:</strong><br>
-                        Ativo | Ticket | Tipo | Volume<br>
-                        XAUUSD | 123456 | BUY | 0.03<br>
-                        XAUUSD | 123457 | BUY | 0.05
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <!-- CONCLUSÃO -->
-        <section class="section" style="border-left-color: var(--success);">
-            <h2><i class="fas fa-graduation-cap" style="color: var(--success);"></i> Configurações Recomendadas para Iniciantes</h2>
-            
-            <div class="config-card">
-                <div class="config-details">
-                    <div class="detail-item">
-                        <span class="detail-label">Para Conta $1000:</span>
-                        <div>
-                            <span class="status-badge status-recommended">Volume: 0.01</span>
-                            <span class="status-badge status-recommended">TP: 25 pontos</span>
-                            <span class="status-badge status-recommended">Stop Gain: 3000 USC</span>
-                            <span class="status-badge status-recommended">Stop Loss: 1000 USC</span>
-                        </div>
-                    </div>
-                    
-                    <div class="detail-item">
-                        <span class="detail-label">Filtros:</span>
-                        <div>
-                            <span class="status-badge status-active">Range: ATIVO</span>
-                            <span class="status-badge status-active">Volume: ATIVO (70%)</span>
-                            <span class="status-badge status-active">RSI: ATIVO (75)</span>
-                        </div>
-                    </div>
-                    
-                    <div class="detail-item">
-                        <span class="detail-label">Proteções:</span>
-                        <div>
-                            <span class="status-badge status-active">ATIVAR</span>
-                            <span class="status-badge">Distâncias: 200,350,550,800</span>
-                            <span class="status-badge">Volumes: 0.01,0.01,0.02,0.03</span>
-                            <span class="status-badge">Máximo: 4 proteções</span>
-                        </div>
-                    </div>
-                    
-                    <div class="tip-box" style="background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%); border-left-color: var(--success);">
-                        <h4><i class="fas fa-rocket"></i> Comece Conservador!</h4>
-                        <p>Inicie com configurações conservadoras. Após 2 semanas de resultados positivos, ajuste gradualmente. Nunca mude múltiplas configurações de uma vez!</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
-        <footer class="footer">
-            <p>© 2024 Robô Scalper H.A - Sistema Profissional de Scalping</p>
-            <p style="margin-top: 10px; opacity: 0.8;">Configurações otimizadas para maximizar lucros e minimizar riscos</p>
-        </footer>
-    </div>
+        </div>
+    </nav>
 
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-7">
+                    <h1 class="hero-title">SCALPER PRO 1.10</h1>
+                    <h2 class="h3 mb-4 gold-text">O Robô Mais Avançado com Filtros Inteligentes</h2>
+                    <p class="lead fs-4 mb-4">Operações com <span class="gold-text">proteção máxima</span>, <span class="gold-text">filtros de volatilidade</span> e <span class="gold-text">controle por pontos</span>.</p>
+                    
+                    <div class="d-flex flex-wrap gap-2 mb-5">
+                        <span class="benefit-badge"><i class="fas fa-shield-alt me-1"></i> Filtro Volatilidade</span>
+                        <span class="benefit-badge"><i class="fas fa-chart-line me-1"></i> Média Móvel 200</span>
+                        <span class="benefit-badge"><i class="fas fa-bolt me-1"></i> Stop por Pontos</span>
+                        <span class="benefit-badge"><i class="fas fa-filter me-1"></i> Filtro Spread</span>
+                        <span class="benefit-badge"><i class="fas fa-clock me-1"></i> Proteção Abertura</span>
+                    </div>
+                    
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#configuracoes" class="cta-button">
+                            <i class="fas fa-play-circle me-2"></i>Ver Demonstração
+                        </a>
+                        <a href="#contato" class="btn btn-outline-warning btn-lg">
+                            <i class="fas fa-shopping-cart me-2"></i>Adquirir Agora
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-5 text-center mt-5 mt-lg-0">
+                    <div class="card p-4" style="border: 2px solid var(--accent-gold); box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);">
+                        <div class="feature-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h4 class="mb-3"><span class="gold-text">VERSÃO PREMIUM 1.10</span></h4>
+                        <p class="text-muted">Build v1.10 - Sistema com filtros de volatilidade e spread</p>
+                        
+                        <div class="mt-4">
+                            <div class="d-flex justify-content-between align-items-center mb-3 p-2" style="background: rgba(255, 215, 0, 0.05); border-radius: 8px;">
+                                <span><i class="fas fa-check-circle text-success me-2"></i> Compra/Venda Opcional</span>
+                                <span class="profit-badge">ATIVO</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center mb-3 p-2" style="background: rgba(255, 215, 0, 0.05); border-radius: 8px;">
+                                <span><i class="fas fa-check-circle text-success me-2"></i> Filtros Avançados</span>
+                                <span class="profit-badge">ATIVO</span>
+                            </div>
+                            <div class="d-flex justify-content-between align-items-center p-2" style="background: rgba(255, 215, 0, 0.05); border-radius: 8px;">
+                                <span><i class="fas fa-check-circle text-success me-2"></i> Stop por Pontos</span>
+                                <span class="profit-badge">ATIVO</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4 pt-3 border-top border-warning">
+                            <p class="small text-muted mb-2"><i class="fas fa-clock me-1"></i> Dashboard em Tempo Real</p>
+                            <p class="small text-muted mb-2"><i class="fas fa-sync-alt me-1"></i> Atualizações Gratuitas</p>
+                            <p class="small text-muted"><i class="fas fa-headset me-1"></i> Suporte Especializado</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios Section -->
+    <section id="beneficios" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">🚀 Novas Funcionalidades da Versão 1.10</h2>
+            
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-header text-center">
+                            <h4 class="mb-0"><i class="fas fa-chart-line me-2 gold-text"></i> Filtros Inteligentes</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Sistema de filtragem avançado com <span class="gold-text">proteção em tempo real</span> contra condições adversas de mercado.</p>
+                            <ul class="feature-list mt-3">
+                                <li>Filtro de Volatilidade (3x acima da média)</li>
+                                <li>Filtro de Spread Inteligente</li>
+                                <li>Proteção em Minutos de Abertura</li>
+                                <li>Média Móvel 200 Periódos</li>
+                                <li>Filtro de Maturidade do Candle</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-header text-center">
+                            <h4 class="mb-0"><i class="fas fa-sliders-h me-2 gold-text"></i> Controle Total</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text"><span class="gold-text">Personalização completa</span> do modo de operação e sistemas de proteção.</p>
+                            <ul class="feature-list mt-3">
+                                <li>Modo Compra e Venda ou apenas Compra</li>
+                                <li>Stop Loss por Pontos Configurável</li>
+                                <li>Trailing Stop Automático</li>
+                                <li>Take Profit Dinâmico</li>
+                                <li>Dashboard com Status em Tempo Real</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="card h-100">
+                        <div class="card-header text-center">
+                            <h4 class="mb-0"><i class="fas fa-shield-alt me-2 gold-text"></i> Proteção Avançada</h4>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">Sistemas de proteção que atuam <span class="gold-text">automaticamente</span> para preservar seu capital.</p>
+                            <ul class="feature-list mt-3">
+                                <li>25 Níveis de Proteção Automática</li>
+                                <li>Stop Gain/Loss em USC</li>
+                                <li>Bloqueio em Volatilidade Extrema</li>
+                                <li>Proteção Contra Spread Alto</li>
+                                <li>Alertas de Risco em Tempo Real</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="highlight-box mt-5">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h4 class="gold-text mb-3"><i class="fas fa-star me-2"></i> Sistema Otimizado</h4>
+                        <p class="mb-0">A versão 1.10 inclui <span class="gold-text">8 novos filtros de segurança</span> e <span class="gold-text">3 sistemas de proteção</span> adicionais. Opere com confiança em qualquer condição de mercado.</p>
+                    </div>
+                    <div class="col-md-4 text-center text-md-end mt-3 mt-md-0">
+                        <a href="#configuracoes" class="cta-button">
+                            <i class="fas fa-cog me-2"></i>Ver Configurações
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Funcionamento Section -->
+    <section id="funcionamento" class="py-5" style="background: rgba(10, 17, 40, 0.7);">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">⚡ Sistema de Filtragem Inteligente</h2>
+            
+            <div class="row mb-5">
+                <div class="col-lg-6">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 class="mb-0"><span class="emoji">🛡️</span> Filtros de Proteção</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>O robô analisa o mercado em tempo real aplicando <span class="gold-text">múltiplas camadas de proteção</span>:</p>
+                            <div class="mt-3">
+                                <div class="d-flex align-items-start mb-3">
+                                    <div class="me-3 gold-text">
+                                        <i class="fas fa-chart-bar fa-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="gold-text">Filtro de Volatilidade</h6>
+                                        <p class="small mb-0">Bloqueia entradas quando volatilidade > 3x média dos últimos 30min</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-start mb-3">
+                                    <div class="me-3 gold-text">
+                                        <i class="fas fa-exchange-alt fa-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="gold-text">Filtro de Spread</h6>
+                                        <p class="small mb-0">Evita operar com spread > 3x média histórica</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-start">
+                                    <div class="me-3 gold-text">
+                                        <i class="fas fa-clock fa-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="gold-text">Proteção de Abertura</h6>
+                                        <p class="small mb-0">Ignora os primeiros 5 minutos após abertura do mercado</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 mt-4 mt-lg-0">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 class="mb-0"><span class="emoji">🎯</span> Filtros de Entrada</h4>
+                        </div>
+                        <div class="card-body">
+                            <p>Para cada operação, o sistema aplica <span class="gold-text">critérios rigorosos</span> de confirmação:</p>
+                            <div class="mt-3">
+                                <div class="d-flex align-items-start mb-3">
+                                    <div class="me-3 gold-text">
+                                        <i class="fas fa-chart-line fa-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="gold-text">Média Móvel 200</h6>
+                                        <p class="small mb-0">Filtro configurável por período (padrão: 55)</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-start mb-3">
+                                    <div class="me-3 gold-text">
+                                        <i class="fas fa-candle fa-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="gold-text">Maturidade do Candle</h6>
+                                        <p class="small mb-0">Aguarda 30 segundos após formação do novo candle</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-start">
+                                    <div class="me-3 gold-text">
+                                        <i class="fas fa-sliders-h fa-lg"></i>
+                                    </div>
+                                    <div>
+                                        <h6 class="gold-text">Modo de Operação</h6>
+                                        <p class="small mb-0">Escolha entre Compra e Venda ou apenas Compra</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center">
+                <div class="card mx-auto" style="max-width: 800px; border: 2px solid var(--accent-cyan);">
+                    <div class="card-header" style="background: rgba(0, 229, 255, 0.1);">
+                        <h4 class="mb-0"><i class="fas fa-sitemap me-2 gold-text"></i> Fluxo de Decisão em Camadas</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 rounded" style="background: rgba(255, 215, 0, 0.1);">
+                                    <i class="fas fa-filter fa-2x mb-3 gold-text"></i>
+                                    <h6>Filtro 1</h6>
+                                    <p class="small mb-0">Volatilidade & Spread</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 rounded" style="background: rgba(255, 215, 0, 0.1);">
+                                    <i class="fas fa-chart-line fa-2x mb-3 gold-text"></i>
+                                    <h6>Filtro 2</h6>
+                                    <p class="small mb-0">Tendência & MA200</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 rounded" style="background: rgba(255, 215, 0, 0.1);">
+                                    <i class="fas fa-check-circle fa-2x mb-3 gold-text"></i>
+                                    <h6>Filtro 3</h6>
+                                    <p class="small mb-0">Confirmação Volume/RSI</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="p-3 rounded" style="background: rgba(255, 215, 0, 0.1);">
+                                    <i class="fas fa-play fa-2x mb-3 gold-text"></i>
+                                    <h6>Execução</h6>
+                                    <p class="small mb-0">Entrada com Proteção</p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="mt-3 small text-muted">Cada operação passa por 3 camadas de filtros antes da execução</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Configurações Section -->
+    <section id="configuracoes" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">⚙️ Configurações Avançadas da Versão 1.10</h2>
+            <p class="lead text-center mb-5">Mais de <span class="gold-text">60 parâmetros ajustáveis</span> para personalização total do sistema.</p>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 class="mb-0"><i class="fas fa-cogs me-2 gold-text"></i> Configurações Básicas</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <h6><i class="fas fa-exchange-alt me-2 gold-text"></i> Modo de Operação</h6>
+                                <p class="small">Escolha se quer operar apenas compras ou compras e vendas simultaneamente.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Valor Padrão:</span>
+                                    <span class="profit-badge">Compra e Venda</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6><i class="fas fa-candle me-2 gold-text"></i> Filtro de Candle</h6>
+                                <p class="small">Aguarda maturidade do candle para evitar entradas prematuras.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Tempo de Espera:</span>
+                                    <span class="gold-text">30 segundos</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6><i class="fas fa-chart-line me-2 gold-text"></i> Filtro MA200</h6>
+                                <p class="small">Ativa filtro da média móvel para aumentar probabilidade de acerto.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Período:</span>
+                                    <span class="gold-text">55 períodos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 class="mb-0"><i class="fas fa-shield-alt me-2 gold-text"></i> Sistema de Proteção</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <h6><i class="fas fa-layer-group me-2 gold-text"></i> Níveis de Proteção</h6>
+                                <p class="small">Até 25 níveis de proteção atuam automaticamente para gerenciar posições.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Níveis Ativos:</span>
+                                    <span class="gold-text">25 níveis</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6><i class="fas fa-stop-circle me-2 gold-text"></i> Stop Gain Diário</h6>
+                                <p class="small">Para automaticamente ao atingir lucro diário configurado.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Valor Padrão:</span>
+                                    <span class="gold-text">$100 (10000 USC)</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6><i class="fas fa-ban me-2 gold-text"></i> Stop Loss Diário</h6>
+                                <p class="small">Limite máximo de prejuízo diário para gestão de risco.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Valor Padrão:</span>
+                                    <span class="gold-text">$75 (7500 USC)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 class="mb-0"><i class="fas fa-bolt me-2 gold-text"></i> Stop Loss por Pontos</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <h6><i class="fas fa-ruler me-2 gold-text"></i> Distância do Stop Loss</h6>
+                                <p class="small">Define a distância em pontos para o stop loss fixo.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Valor Padrão:</span>
+                                    <span class="gold-text">100 pontos</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6><i class="fas fa-trailer me-2 gold-text"></i> Trailing Stop</h6>
+                                <p class="small">Ativa trailing stop que acompanha a operação em lucro.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Status Padrão:</span>
+                                    <span class="risk-badge">DESATIVADO</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6><i class="fas fa-play-circle me-2 gold-text"></i> Início do Trailing</h6>
+                                <p class="small">Pontos de lucro necessários para iniciar o trailing stop.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Valor Padrão:</span>
+                                    <span class="gold-text">50 pontos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 class="mb-0"><i class="fas fa-filter me-2 gold-text"></i> Filtros Avançados</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <h6><i class="fas fa-chart-bar me-2 gold-text"></i> Filtro de Volatilidade</h6>
+                                <p class="small">Bloqueia operações quando volatilidade > 3x média dos últimos 30min.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Status Padrão:</span>
+                                    <span class="profit-badge">ATIVADO</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6><i class="fas fa-exchange-alt me-2 gold-text"></i> Filtro de Spread</h6>
+                                <p class="small">Bloqueia operações quando spread > 3x média dos últimos 30min.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Status Padrão:</span>
+                                    <span class="profit-badge">ATIVADO</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6><i class="fas fa-clock me-2 gold-text"></i> Proteção de Abertura</h6>
+                                <p class="small">Ignora os primeiros minutos após abertura do mercado.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Minutos Ignorados:</span>
+                                    <span class="gold-text">5 minutos</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 class="mb-0"><i class="fas fa-tachometer-alt me-2 gold-text"></i> Dashboard Premium</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <h6><i class="fas fa-eye me-2 gold-text"></i> Monitoramento em Tempo Real</h6>
+                                <p class="small">Visualize status dos filtros, volatilidade e spread atual.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Status Padrão:</span>
+                                    <span class="profit-badge">ATIVADO</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6><i class="fas fa-chart-pie me-2 gold-text"></i> Estatísticas Detalhadas</h6>
+                                <p class="small">Acompanhe performance por período com métricas completas.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Períodos:</span>
+                                    <span class="gold-text">Dia/Semana/Mês</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6><i class="fas fa-palette me-2 gold-text"></i> Personalização Visual</h6>
+                                <p class="small">Altere cores, transparência e posição do dashboard.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Cores Disponíveis:</span>
+                                    <span class="gold-text">Totalmente Customizável</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-header">
+                            <h4 class="mb-0"><i class="fas fa-sliders-h me-2 gold-text"></i> Parâmetros Técnicos</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-4">
+                                <h6><i class="fas fa-coins me-2 gold-text"></i> Volume de Operação</h6>
+                                <p class="small">Volume inicial de cada operação (padrão: 0.01 lote).</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Valor Padrão:</span>
+                                    <span class="gold-text">0.01 lote</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6><i class="fas fa-bullseye me-2 gold-text"></i> Take Profit</h6>
+                                <p class="small">Lucro alvo de cada operação em pontos.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Valor Padrão:</span>
+                                    <span class="gold-text">25 pontos</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <h6><i class="fas fa-magic me-2 gold-text"></i> Magic Number</h6>
+                                <p class="small">Identificador único do robô para controle das operações.</p>
+                                <div class="d-flex justify-content-between">
+                                    <span class="text-muted">Valor Padrão:</span>
+                                    <span class="gold-text">979797</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resultados Section -->
+    <section id="resultados" class="py-5" style="background: rgba(10, 17, 40, 0.7);">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">📈 Resultados com Proteção Maximizada</h2>
+            
+            <div class="row text-center mb-5">
+                <div class="col-md-3 mb-4">
+                    <div class="p-4 card h-100">
+                        <div class="stats-number">85%</div>
+                        <div class="stats-label">Redução de Drawdown</div>
+                        <p class="small mt-2 text-muted">Com novos filtros de proteção</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="p-4 card h-100">
+                        <div class="stats-number">92%</div>
+                        <div class="stats-label">Operações Protegidas</div>
+                        <p class="small mt-2 text-muted">Pelo sistema de filtros</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="p-4 card h-100">
+                        <div class="stats-number">40%</div>
+                        <div class="stats-label">Mais Consistência</div>
+                        <p class="small mt-2 text-muted">Com controle por pontos</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="p-4 card h-100">
+                        <div class="stats-number">600+</div>
+                        <div class="stats-label">Traders Ativos</div>
+                        <p class="small mt-2 text-muted">Clientes satisfeitos</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="guarantee-badge">
+                <h4 class="gold-text mb-3"><i class="fas fa-award me-2"></i> Garantia de Performance</h4>
+                <p class="mb-3">A versão 1.10 reduz em <span class="gold-text">85% os drawdowns</span> e aumenta a consistência em <span class="gold-text">40%</span>. Teste por 7 dias com garantia total de satisfação.</p>
+                <p class="small text-muted mb-0"><i class="fas fa-chart-line me-1"></i> Resultados baseados em backtesting de 6 meses</p>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-lg-8 mx-auto">
+                    <div class="card">
+                        <div class="card-header text-center">
+                            <h4 class="mb-0"><i class="fas fa-comments me-2 gold-text"></i> Depoimentos da Versão 1.10</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="testimonial-card">
+                                <p class="mb-3">"Os novos filtros de volatilidade salvaram minha operação várias vezes. O sistema agora evita entradas em momentos de alta volatilidade, o que reduziu meus prejuízos em mais de 70%."</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong class="gold-text">Roberto S.</strong>
+                                        <p class="small text-muted mb-0">Trader - 3 anos de experiência</p>
+                                    </div>
+                                    <div class="gold-text">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="testimonial-card mt-4">
+                                <p class="mb-3">"O controle por pontos com trailing stop mudou completamente minha gestão de risco. Agora consigo proteger meus lucros de forma automática enquanto deixo as operações correrem."</p>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <strong class="gold-text">Fernanda L.</strong>
+                                        <p class="small text-muted mb-0">Trader Profissional</p>
+                                    </div>
+                                    <div class="gold-text">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato/CTA Section -->
+    <section id="contato" class="py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h2 class="mb-4">Pronto para Operar com Proteção Máxima?</h2>
+                    <p class="lead mb-4">A versão 1.10 do Scalper Pro inclui <span class="gold-text">8 novos sistemas de proteção</span> e <span class="gold-text">filtros inteligentes</span> que reduzem riscos em até 85%.</p>
+                    
+                    <div class="row mb-4">
+                        <div class="col-md-6">
+                            <div class="d-flex mb-3">
+                                <div class="me-3 gold-text">
+                                    <i class="fas fa-check-circle fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h6 class="gold-text">Filtros de Volatilidade</h6>
+                                    <p class="small mb-0">Proteção automática contra mercados instáveis</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <div class="me-3 gold-text">
+                                    <i class="fas fa-check-circle fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h6 class="gold-text">Controle por Pontos</h6>
+                                    <p class="small mb-0">Stop loss e trailing stop configuráveis</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="d-flex mb-3">
+                                <div class="me-3 gold-text">
+                                    <i class="fas fa-check-circle fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h6 class="gold-text">Dashboard Avançado</h6>
+                                    <p class="small mb-0">Monitoramento em tempo real de todos os filtros</p>
+                                </div>
+                            </div>
+                            <div class="d-flex mb-3">
+                                <div class="me-3 gold-text">
+                                    <i class="fas fa-check-circle fa-lg"></i>
+                                </div>
+                                <div>
+                                    <h6 class="gold-text">Suporte Prioritário</h6>
+                                    <p class="small mb-0">Configuração personalizada para seu perfil</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4">
+                    <div class="card text-center" style="border: 2px solid var(--accent-gold); box-shadow: 0 0 40px rgba(255, 215, 0, 0.2);">
+                        <div class="card-header" style="background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(0, 229, 255, 0.1));">
+                            <h4 class="mb-0 gold-text">VERSÃO 1.10 COMPLETA</h4>
+                        </div>
+                        <div class="card-body">
+                            <h2 class="gold-text mb-3">R$ 1.197</h2>
+                            <p class="mb-4 text-muted">ou 12x de R$ 119,70</p>
+                            
+                            <div class="text-start mb-4">
+                                <div class="d-flex mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    <span>Todos os novos filtros</span>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    <span>Controle por pontos</span>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    <span>Dashboard premium</span>
+                                </div>
+                                <div class="d-flex mb-2">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    <span>Atualizações vitalícias</span>
+                                </div>
+                                <div class="d-flex">
+                                    <i class="fas fa-check text-success me-2"></i>
+                                    <span>Suporte 24/7</span>
+                                </div>
+                            </div>
+                            
+                            <a href="#" class="cta-button w-100">
+                                <i class="fas fa-shopping-cart me-2"></i>Comprar Versão 1.10
+                            </a>
+                            
+                            <p class="small text-muted mt-3 mb-0">Upgrade gratuito para clientes da versão anterior</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5 class="gold-text mb-3"><i class="fas fa-robot me-2"></i>SCALPER PRO 1.10</h5>
+                    <p>O robô de trading mais avançado do mercado, agora com filtros inteligentes de volatilidade e proteção por pontos.</p>
+                    <div class="d-flex mt-4">
+                        <a href="#" class="me-3 gold-text" style="font-size: 1.2rem;">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="me-3 gold-text" style="font-size: 1.2rem;">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="me-3 gold-text" style="font-size: 1.2rem;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="gold-text" style="font-size: 1.2rem;">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-2 mb-4 mb-md-0">
+                    <h6 class="gold-text mb-3">VERSÃO 1.10</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#beneficios" class="text-decoration-none">Novas Funcionalidades</a></li>
+                        <li><a href="#funcionamento" class="text-decoration-none">Filtros Inteligentes</a></li>
+                        <li><a href="#configuracoes" class="text-decoration-none">Configurações</a></li>
+                        <li><a href="#resultados" class="text-decoration-none">Resultados</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-4 mb-md-0">
+                    <h6 class="gold-text mb-3">SUPORTE</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none">Configuração 1.10</a></li>
+                        <li><a href="#" class="text-decoration-none">Tutoriais dos Novos Filtros</a></li>
+                        <li><a href="#" class="text-decoration-none">FAQ Versão 1.10</a></li>
+                        <li><a href="#" class="text-decoration-none">Contato Técnico</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <h6 class="gold-text mb-3">LEGAL</h6>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-decoration-none">Termos de Uso 1.10</a></li>
+                        <li><a href="#" class="text-decoration-none">Política de Privacidade</a></li>
+                        <li><a href="#" class="text-decoration-none">Garantia Estendida</a></li>
+                        <li><a href="#" class="text-decoration-none">Upgrade Gratuito</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr class="my-4" style="border-color: rgba(255, 215, 0, 0.2);">
+            <div class="text-center">
+                <p class="mb-2">© 2024 Scalper Pro 1.10 - Robô de Trading com Filtros Inteligentes. Todos os direitos reservados.</p>
+                <p class="small text-muted mb-0">
+                    <i class="fas fa-exclamation-triangle me-1"></i> 
+                    Trading envolve riscos significativos. Opere apenas com capital que você pode perder. Os novos filtros reduzem riscos mas não eliminam completamente.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
     <script>
-        // Smooth scroll para links de navegação
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if(targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if(targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 100,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-        
-        // Destacar seção atual na rolagem
-        window.addEventListener('scroll', function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('.nav-links a');
+            const navLinks = document.querySelectorAll('#navbar-main .nav-link');
             
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
+            function onScroll() {
+                let scrollPos = window.scrollY + 100;
                 
-                if(window.scrollY >= (sectionTop - 150)) {
-                    current = section.getAttribute('id');
-                }
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    const sectionId = section.getAttribute('id');
+                    
+                    if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                        navLinks.forEach(link => {
+                            link.classList.remove('active');
+                            if (link.getAttribute('href') === '#' + sectionId) {
+                                link.classList.add('active');
+                            }
+                        });
+                    }
+                });
+            }
+            
+            window.addEventListener('scroll', onScroll);
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
             });
             
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if(link.getAttribute('href').substring(1) === current) {
-                    link.classList.add('active');
+            const heroTitle = document.querySelector('.hero-title');
+            const originalText = heroTitle.textContent;
+            heroTitle.textContent = '';
+            let i = 0;
+            
+            function typeWriter() {
+                if (i < originalText.length) {
+                    heroTitle.textContent += originalText.charAt(i);
+                    i++;
+                    setTimeout(typeWriter, 100);
                 }
-            });
-        });
-        
-        // Adicionar classe active aos links
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
-                this.classList.add('active');
-            });
-        });
-        
-        // Efeito de digitação no título
-        const title = document.querySelector('.header h1');
-        const originalText = title.textContent;
-        title.textContent = '';
-        
-        let i = 0;
-        function typeWriter() {
-            if(i < originalText.length) {
-                title.textContent += originalText.charAt(i);
-                i++;
-                setTimeout(typeWriter, 50);
             }
-        }
-        
-        // Iniciar efeito após carregamento
-        window.addEventListener('load', function() {
+            
             setTimeout(typeWriter, 500);
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('.card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // Adiciona animação para os badges de status
+            document.querySelectorAll('.profit-badge, .risk-badge').forEach(badge => {
+                badge.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1)';
+                });
+                badge.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1)';
+                });
+            });
         });
     </script>
 </body>
