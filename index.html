@@ -234,6 +234,29 @@
             font-size: 0.8em;
             padding: 0.3em 0.6em;
         }
+        
+        .sr-card {
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.95) 0%, rgba(30, 30, 50, 0.95) 100%);
+            border: 1px solid rgba(108, 92, 231, 0.3);
+        }
+        
+        .sr-title {
+            color: #8a2be2;
+            border-bottom: 2px solid #8a2be2;
+        }
+        
+        .fractal-icon {
+            color: #9370db;
+        }
+        
+        .new-badge {
+            background: linear-gradient(45deg, #8a2be2, #9370db);
+            color: white;
+            font-size: 0.7rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 10px;
+            margin-left: 10px;
+        }
     </style>
 </head>
 <body>
@@ -300,7 +323,7 @@
                 <p class="text-light mb-3">
                     Este é o mesmo robô que você viu nos vídeos:
                 </p>
-                <a href="https://drive.google.com/file/d/1p7unE_n_iS2iUHOGdk_CP8_rdwJS8bXG/view?usp=sharing" 
+                <a href="https://drive.google.com/file/d/1_bLp-MrSAnGmXjVJ2T2QYG7GCmvhG9kZ/view?usp=drive_link" 
                    target="_blank" 
                    class="btn btn-primary btn-mobile">
                     <i class="bi bi-arrow-down-circle"></i>
@@ -374,11 +397,10 @@
                         <div class="border rounded p-3 bg-dark h-100">
                             <h5 class="text-success">USD (Dólares)</h5>
                             <p class="small text-light">Para contas em dólares americanos</p>
-                            <a href="https://drive.google.com/file/d/10r9Q00kLJgo6IYa6vqGZdUAjjlvlvUrC/view?usp=drive_link" 
-                               target="_blank" 
-                               class="btn btn-outline-success btn-sm w-100">
-                                <i class="bi bi-download"></i> Baixar Set USD
-                            </a>
+                            <div class="param-box">
+                                Usar configuração padrão do robô: 0.01 lot
+                            </div>
+                            <p class="small text-muted mt-2">A configuração padrão já vem otimizada para contas USD</p>
                         </div>
                     </div>
                     
@@ -386,7 +408,7 @@
                         <div class="border rounded p-3 bg-dark h-100">
                             <h5 class="text-warning">USC (Cents)</h5>
                             <p class="small text-light">Para contas em centavos de dólar</p>
-                            <a href="https://drive.google.com/file/d/1zd2iZdUYfsmN-IinU9oV1hFNTZIeZfIg/view?usp=drive_link" 
+                            <a href="https://drive.google.com/file/d/1sy1spJ3rXSpzKKqFLs7Qooe5fJUmZs6i/view?usp=drive_link" 
                                target="_blank" 
                                class="btn btn-outline-warning btn-sm w-100">
                                 <i class="bi bi-download"></i> Baixar Set USC
@@ -749,6 +771,96 @@
                             </div>
                         </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Filtro de Suporte e Resistência - NOVO -->
+            <div class="config-card sr-card mt-4">
+                <div class="d-flex align-items-start mb-4">
+                    <div>
+                        <i class="bi bi-pentagon fractal-icon me-2"></i>
+                        <h5 class="mb-1 text-light d-inline sr-title">Filtro de Suporte e Resistência via Fractais</h5>
+                        <span class="new-badge">NOVO na Versão 2</span>
+                    </div>
+                    <span class="badge bg-success ms-auto">Ativado</span>
+                </div>
+                
+                <div class="alert-custom alert-info mb-4" style="border-left-color: #8a2be2; background: rgba(138, 43, 226, 0.15);">
+                    <i class="bi bi-info-circle"></i>
+                    <strong>Importante:</strong> Este filtro evita que o robô entre em zonas próximas a suportes e resistências 
+                    identificadas via fractais, aumentando significativamente a taxa de acerto.
+                </div>
+                
+                <div class="row g-3">
+                    <div class="col-12 col-md-6">
+                        <div class="border rounded p-3 h-100 bg-dark">
+                            <h6 class="text-primary text-light mb-3">
+                                <i class="bi bi-toggle-on"></i> Ativação do Filtro
+                            </h6>
+                            <div class="param-box">
+                                Ativar filtro S/R = true
+                            </div>
+                            <p class="small mt-2 mb-0 text-light">
+                                <i class="bi bi-check-circle text-success"></i> 
+                                Quando ativado, o robô verifica se o preço está muito próximo de zonas de suporte/resistência
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-md-6">
+                        <div class="border rounded p-3 h-100 bg-dark">
+                            <h6 class="text-warning text-light mb-3">
+                                <i class="bi bi-clock-history"></i> Período para Buscar Fractais
+                            </h6>
+                            <div class="param-box">
+                                Período para buscar fractais = 20
+                            </div>
+                            <p class="small mt-2 mb-0 text-light">
+                                <i class="bi bi-info-circle text-info"></i> 
+                                Quantas velas para trás o sistema deve analisar para identificar fractais
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row g-3 mt-3">
+                    <div class="col-12 col-md-6">
+                        <div class="border rounded p-3 h-100 bg-dark">
+                            <h6 class="text-success text-light mb-3">
+                                <i class="bi bi-arrows-expand"></i> Multiplicador ATR para Zona
+                            </h6>
+                            <div class="param-box">
+                                Multiplicador ATR para zona = 0.3
+                            </div>
+                            <p class="small mt-2 mb-0 text-light">
+                                <i class="bi bi-rulers text-success"></i> 
+                                Define a largura da zona de S/R baseada na volatilidade atual (ATR)
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 col-md-6">
+                        <div class="border rounded p-3 h-100 bg-dark">
+                            <h6 class="text-danger text-light mb-3">
+                                <i class="bi bi-signpost-split"></i> Distância Mínima entre Fractais
+                            </h6>
+                            <div class="param-box">
+                                Distância mínima entre fractais ATR = 1.0
+                            </div>
+                            <p class="small mt-2 mb-0 text-light">
+                                <i class="bi bi-filter-circle text-danger"></i> 
+                                Evita a identificação de múltiplos fractais muito próximos
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="alert-custom alert-success mt-4">
+                    <i class="bi bi-shield-check"></i>
+                    <strong>Como funciona na prática:</strong> 
+                    O robô identifica os últimos fractais significativos (mínimos e máximos locais) e 
+                    cria zonas de suporte/resistência ao redor deles. Quando o preço se aproxima dessas 
+                    zonas, o robô evita entrar, pois há maior probabilidade de reversão.
                 </div>
             </div>
 
