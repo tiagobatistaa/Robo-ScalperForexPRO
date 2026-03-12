@@ -1,1516 +1,671 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Robô Forex PRO - Guia Completo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <title>Scalper PRO 4.0 vs Scalper FAST • Comparativo Profissional</title>
     <style>
-        :root {
-            --primary: #0d6efd;
-            --success: #198754;
-            --danger: #dc3545;
-            --warning: #ffc107;
-            --dark: #121212;
-            --darker: #0a0a0a;
-            --light: #f8f9fa;
-        }
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
         
         body {
-            background-color: var(--dark);
-            color: var(--light);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            padding: 0;
+            background: #0a0c12;
+            min-height: 100vh;
+            padding: 40px 20px;
         }
         
-        /* Header Simples */
-        .main-header {
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
-            padding: 1rem 0;
-            border-bottom: 3px solid var(--primary);
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
         }
         
-        /* Cards Responsivos */
-        .info-card {
-            background: rgba(40, 40, 40, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            transition: transform 0.3s ease;
-        }
-        
-        .info-card:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary);
-        }
-        
-        /* Links de Destaque */
-        .link-destaque {
-            display: block;
-            background: rgba(13, 110, 253, 0.15);
-            border: 2px solid var(--primary);
-            border-radius: 10px;
-            padding: 1rem;
-            margin: 1rem 0;
-            color: white;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        
-        .link-destaque:hover {
-            background: rgba(13, 110, 253, 0.3);
-            transform: scale(1.02);
-        }
-        
-        /* Botões para Mobile */
-        .btn-mobile {
-            display: block;
-            width: 100%;
-            padding: 1rem;
-            margin: 0.5rem 0;
-            border-radius: 10px;
+        /* Header com efeito glassmorphism */
+        .header {
             text-align: center;
-            font-weight: bold;
+            margin-bottom: 60px;
+            position: relative;
         }
         
-        /* Alertas Simples */
-        .alert-simple {
-            background: rgba(255, 193, 7, 0.15);
-            border-left: 4px solid var(--warning);
-            padding: 1rem;
-            margin: 1rem 0;
-            border-radius: 0 8px 8px 0;
+        .header h1 {
+            font-size: 3.5em;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
         }
         
-        /* Configuração MT5 - CORRIGIDO (fundo escuro) */
-        .mt5-config {
-            background: #1a1a1a !important;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: var(--light) !important;
+        .header .subtitle {
+            color: #8f9bb3;
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
         }
         
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .info-card {
-                padding: 1rem;
-                margin-bottom: 1rem;
-            }
-            
-            .display-5 {
-                font-size: 1.8rem !important;
-            }
-            
-            .lead {
-                font-size: 1rem !important;
-            }
-            
-            body {
-                padding: 0 10px;
-            }
+        .header-glow {
+            position: absolute;
+            top: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(79, 114, 202, 0.2) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: -1;
         }
         
-        @media (max-width: 576px) {
-            .main-header {
-                padding: 0.75rem 0;
-            }
-            
-            .info-card {
-                border-radius: 8px;
-                padding: 0.75rem;
-            }
-            
-            h1, h2, h3, h4, h5, h6 {
-                word-wrap: break-word;
-            }
-        }
-        
-        /* Ícones Destaque */
-        .icon-destaque {
-            font-size: 1.5rem;
-            margin-right: 10px;
-            vertical-align: middle;
-        }
-        
-        /* Lista de Links */
-        .link-list {
-            list-style: none;
-            padding-left: 0;
-        }
-        
-        .link-list li {
-            padding: 0.5rem 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-        
-        .link-list li:last-child {
-            border-bottom: none;
-        }
-        
-        .link-list a {
-            color: var(--primary);
-            text-decoration: none;
-        }
-        
-        .link-list a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Configurações Detalhadas */
-        .config-card {
-            background: rgba(30, 30, 30, 0.95);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 1.25rem;
-            margin-bottom: 1rem;
-        }
-        
-        .param-box {
-            background: rgba(13, 110, 253, 0.15);
-            border: 1px solid rgba(13, 110, 253, 0.4);
-            border-radius: 8px;
-            padding: 10px 15px;
-            margin: 10px 0;
-            font-family: 'Courier New', monospace;
-            color: #e0e0e0;
-            display: block;
-        }
-        
-        .step-number {
-            display: inline-flex;
-            align-items: center;
+        /* Cards container */
+        .robos-container {
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
             justify-content: center;
-            width: 30px;
-            height: 30px;
-            background: var(--primary);
+            margin-bottom: 60px;
+        }
+        
+        /* Card base com efeito moderno */
+        .robo-card {
+            flex: 1;
+            min-width: 400px;
+            background: rgba(18, 22, 32, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 40px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+        
+        .robo-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Efeito de brilho nas bordas */
+        .robo-card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
+            border-radius: 42px;
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+        
+        .robo-card:hover::before {
+            opacity: 1;
+        }
+        
+        /* Headers com gradientes exclusivos */
+        .robo-header {
+            padding: 40px 40px 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-pro {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        .header-fast {
+            background: linear-gradient(135deg, #2d1a1a 0%, #1a0f0f 100%);
+            border-bottom: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        
+        .robo-header h2 {
+            font-size: 2.5em;
+            font-weight: 700;
             color: white;
-            border-radius: 50%;
-            font-weight: bold;
-            margin-right: 10px;
-            flex-shrink: 0;
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
         }
         
-        .alert-custom {
-            background: rgba(255, 255, 255, 0.08);
-            border-left: 4px solid;
-            border-radius: 0 8px 8px 0;
-            padding: 12px;
-            margin: 12px 0;
-            color: #e0e0e0;
+        .robo-header .version {
+            font-size: 1.1em;
+            opacity: 0.8;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        .alert-info {
-            border-left-color: var(--primary);
-            background: rgba(13, 110, 253, 0.15);
+        .version-badge {
+            background: rgba(255,255,255,0.1);
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.8em;
+            font-weight: 600;
+            letter-spacing: 0.05em;
         }
         
-        .alert-success {
-            border-left-color: var(--success);
-            background: rgba(25, 135, 84, 0.15);
+        /* Conteúdo do card */
+        .robo-content {
+            padding: 30px 40px 40px;
         }
         
-        .alert-warning {
-            border-left-color: var(--warning);
-            background: rgba(255, 193, 7, 0.15);
+        /* Tags de destaque */
+        .perfil-tags {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+        
+        .tag {
+            padding: 8px 18px;
+            border-radius: 100px;
+            font-size: 0.9em;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        
+        .tag-pro {
+            background: rgba(59, 130, 246, 0.15);
+            color: #93c5fd;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+        
+        .tag-fast {
+            background: rgba(239, 68, 68, 0.15);
+            color: #fecaca;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+        }
+        
+        .tag-destaque {
+            background: linear-gradient(135deg, #f59e0b, #fbbf24);
+            color: #000;
+            font-weight: 700;
+        }
+        
+        /* Seções de informações */
+        .info-section {
+            margin-bottom: 35px;
         }
         
         .section-title {
-            color: #f0f0f0;
-            border-bottom: 2px solid var(--primary);
-            padding-bottom: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #a5b4fc;
             margin-bottom: 20px;
-            font-size: 1.5rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
-        .badge-config {
-            font-size: 0.8em;
-            padding: 0.3em 0.6em;
+        .section-title-pro {
+            color: #93c5fd;
         }
         
-        .sr-card {
-            background: linear-gradient(135deg, rgba(40, 40, 40, 0.95) 0%, rgba(30, 30, 50, 0.95) 100%);
-            border: 1px solid rgba(108, 92, 231, 0.3);
+        .section-title-fast {
+            color: #fecaca;
         }
         
-        .sr-title {
-            color: #8a2be2;
-            border-bottom: 2px solid #8a2be2;
+        /* Grid de volumes */
+        .volumes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 10px;
         }
         
-        .fractal-icon {
-            color: #9370db;
+        .volume-item {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 15px 10px;
+            text-align: center;
+            transition: all 0.3s;
         }
         
-        .new-badge {
-            background: linear-gradient(45deg, #8a2be2, #9370db);
+        .volume-item:hover {
+            background: rgba(255,255,255,0.06);
+            border-color: rgba(255,255,255,0.1);
+            transform: translateY(-3px);
+        }
+        
+        .volume-value {
+            font-size: 1.8em;
+            font-weight: 700;
             color: white;
-            font-size: 0.7rem;
-            padding: 0.2rem 0.6rem;
+            line-height: 1.2;
+        }
+        
+        .volume-label {
+            font-size: 0.8em;
+            color: #8f9bb3;
+            margin-top: 5px;
+        }
+        
+        .volume-pro .volume-value {
+            color: #93c5fd;
+        }
+        
+        .volume-fast .volume-value {
+            color: #fecaca;
+        }
+        
+        /* Grid de proteções */
+        .protecoes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        
+        .protecao-item {
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            padding: 18px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        
+        .protecao-numero {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: white;
+            line-height: 1;
+        }
+        
+        .protecao-desc {
+            font-size: 0.8em;
+            color: #8f9bb3;
+            margin-top: 5px;
+        }
+        
+        .protecao-numero-pro {
+            color: #93c5fd;
+        }
+        
+        .protecao-numero-fast {
+            color: #fecaca;
+        }
+        
+        /* Lista de recursos */
+        .recursos-lista {
+            list-style: none;
+        }
+        
+        .recurso-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 15px;
+            color: #d1d5db;
+            font-size: 1em;
+        }
+        
+        .recurso-icon {
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.03);
             border-radius: 10px;
-            margin-left: 10px;
+            font-size: 1.2em;
+        }
+        
+        .recurso-destaque {
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Modos de operação - design elegante */
+        .modos-container {
+            background: rgba(0,0,0,0.3);
+            border-radius: 24px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 1px solid rgba(255,255,255,0.03);
+        }
+        
+        .modos-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #a5b4fc;
+            font-size: 0.9em;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        .modos-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+        
+        .modo-card {
+            background: rgba(255,255,255,0.02);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 16px;
+            padding: 12px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #e2e8f0;
+            transition: all 0.2s;
+        }
+        
+        .modo-card:hover {
+            background: rgba(255,255,255,0.05);
+            border-color: rgba(255,255,255,0.1);
+            transform: scale(1.02);
+        }
+        
+        /* Badge DUAL TP */
+        .badge-dual {
+            display: inline-block;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 100px;
+            font-size: 0.7em;
+            font-weight: 600;
+            margin-left: 8px;
+            letter-spacing: 0.02em;
+        }
+        
+        /* Box de destaque */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(79, 114, 202, 0.1) 0%, transparent 100%);
+            border: 1px solid rgba(79, 114, 202, 0.2);
+            border-radius: 20px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .highlight-box-fast {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, transparent 100%);
+            border-color: rgba(239, 68, 68, 0.2);
+        }
+        
+        .highlight-text {
+            color: #e2e8f0;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+        
+        .highlight-text strong {
+            color: white;
+        }
+        
+        /* Footer comparativo */
+        .comparativo-footer {
+            background: rgba(18, 22, 32, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.03);
+            border-radius: 40px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+        
+        .footer-title {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .caracteristicas-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .caracteristica-col h3 {
+            color: #a5b4fc;
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .caracteristica-col ul {
+            list-style: none;
+        }
+        
+        .caracteristica-col li {
+            color: #d1d5db;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .caracteristica-col li span {
+            color: #4ade80;
+            font-weight: 600;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 900px) {
+            .robo-card {
+                min-width: 100%;
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .caracteristicas-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header Simples -->
-    <header class="main-header">
-        <div class="container">
-            <div class="text-center">
-                <h1 class="display-5 text-light mb-2">
-                    <i class="bi bi-robot text-warning"></i>
-                    Robô Forex PRO
-                </h1>
-                <p class="lead text-light mb-0">Guia Completo de Instalação e Configuração</p>
-            </div>
+    <div class="container">
+        <div class="header">
+            <div class="header-glow"></div>
+            <h1>SCALPER TRADING SYSTEMS</h1>
+            <div class="subtitle">Escolha a estratégia que combina com seu perfil: <strong>consistência cirúrgica</strong> ou <strong>alta frequência</strong></div>
         </div>
-    </header>
-
-    <!-- Conteúdo Principal -->
-    <main class="container py-4">
-        <!-- Seção de Boas-vindas -->
-        <section class="mb-4">
-            <div class="info-card">
-                <div class="text-center mb-4">
-                    <h2 class="text-warning">
-                        <i class="bi bi-stars"></i>
-                        Bem-vindo ao Robô Forex PRO!
-                    </h2>
-                    <p class="text-light">
-                        Siga este guia passo a passo para começar a operar com sucesso
-                    </p>
-                </div>
-                
-                <!-- Instagram Link -->
-                <a href="https://www.instagram.com/roboiaforex/" target="_blank" class="link-destaque text-center">
-                    <i class="bi bi-instagram icon-destaque"></i>
-                    <strong>Siga nosso Instagram</strong>
-                    <br>
-                    <small class="text-light">Material exclusivo, vídeos e suporte</small>
-                </a>
-                
-                <div class="alert-simple">
-                    <i class="bi bi-lightbulb-fill"></i>
-                    <strong>Dica Importante:</strong> Assista os destaques no Instagram - temos muito material educativo lá!
-                </div>
-                
-                <p class="text-light mt-3">
-                    <i class="bi bi-check-circle text-success"></i>
-                    Leia todas as informações abaixo para evitar precisar voltar ao Instagram para tirar dúvidas.
-                </p>
-                
-                <p class="text-light">
-                    <i class="bi bi-chat-dots-fill text-primary"></i>
-                    Se você ler até o final e ainda ficar com dúvidas, pode nos chamar!
-                </p>
-            </div>
-        </section>
-
-        <!-- Link do Robô -->
-        <section class="mb-4">
-            <div class="info-card">
-                <h3 class="text-light mb-3">
-                    <i class="bi bi-download icon-destaque"></i>
-                    Download do Robô
-                </h3>
-                <p class="text-light mb-3">
-                    Este é o mesmo robô que você viu nos vídeos:
-                </p>
-                <a href="https://drive.google.com/file/d/1gQMTjZ9fVW7JEQo8O5hFSMom2_g4nTqy/view?usp=drive_link" 
-                   target="_blank" 
-                   class="btn btn-primary btn-mobile">
-                    <i class="bi bi-arrow-down-circle"></i>
-                    BAIXAR ROBÔ FOREX PRO
-                </a>
-            </div>
-        </section>
-
-        <!-- Vídeo de Instalação -->
-        <section class="mb-4">
-            <div class="info-card">
-                <h3 class="text-light mb-3">
-                    <i class="bi bi-camera-video icon-destaque"></i>
-                    Como Instalar o Robô
-                </h3>
-                <p class="text-light mb-3">
-                    Assista este vídeo tutorial para instalação passo a passo:
-                </p>
-                <a href="https://drive.google.com/file/d/1lLElVQefVvUIjmLHUmDdEBXsoBBwC_mi/view?usp=drive_link" 
-                   target="_blank" 
-                   class="btn btn-success btn-mobile">
-                    <i class="bi bi-play-circle"></i>
-                    ASSISTIR VÍDEO DE INSTALAÇÃO
-                </a>
-            </div>
-        </section>
-
-        <!-- Configuração do MT5 - CORRIGIDO -->
-        <section class="mb-4">
-            <div class="info-card">
-                <h3 class="text-light mb-3">
-                    <i class="bi bi-gear icon-destaque"></i>
-                    Configuração do MetaTrader 5
-                </h3>
-                
-                <div class="mt5-config p-3 rounded">
-                    <h5 class="text-warning">Passo a Passo:</h5>
-                    <ol class="mt-2 text-light">
-                        <li>Abra o MT5</li>
-                        <li>Vá em <strong>Ferramentas → Opções</strong></li>
-                        <li>Na última opção, marque o check que fala sobre "permitir URLs"</li>
-                        <li>Adicione a seguinte URL:</li>
-                    </ol>
-                    
-                    <div class="mt-3 p-3 bg-dark rounded">
-                        <code class="text-warning">http://38.240.34.75</code>
+        
+        <div class="robos-container">
+            <!-- SCALPER PRO 4.0 -->
+            <div class="robo-card">
+                <div class="robo-header header-pro">
+                    <h2>SCALPER PRO 4.0</h2>
+                    <div class="version">
+                        <span>⚡ Dual TP Global</span>
+                        <span class="version-badge">CONSISTÊNCIA</span>
                     </div>
                 </div>
                 
-                <div class="alert alert-danger mt-3">
-                    <i class="bi bi-exclamation-triangle"></i>
-                    <strong>Liberar a Licença:</strong> Após instalar, o robô vai dar erro de licença. 
-                    Volte no Instagram e solicite com <b>número da sua conta</b> da corretora a sua liberação para 7 dias!
-                </div>
-            </div>
-        </section>
-
-        <!-- Sets Prontos -->
-        <section class="mb-4">
-            <div class="info-card">
-                <h3 class="text-light mb-3">
-                    <i class="bi bi-graph-up-arrow icon-destaque"></i>
-                    Sets Prontos para Uso
-                </h3>
-                <p class="text-light mb-3">
-                    Temos 2 sets prontos com lucro de 15 a 20 dólares diários:
-                </p>
-                
-                <div class="row">
-                    <div class="col-12 col-md-6 mb-3">
-                        <div class="border rounded p-3 bg-dark h-100">
-                            <h5 class="text-success">USD (Dólares)</h5>
-                            <p class="small text-light">Para contas em dólares americanos</p>
-                            <div class="param-box">
-                                Usar configuração padrão do robô: 0.01 lot
+                <div class="robo-content">
+                    <div class="perfil-tags">
+                        <span class="tag tag-pro">🎯 ASSERTIVIDADE CIRÚRGICA</span>
+                        <span class="tag tag-pro">🛡️ PROTEÇÃO MÁXIMA</span>
+                    </div>
+                    
+                    <div class="info-section">
+                        <div class="section-title section-title-pro">
+                            <span>💰</span> VOLUME INICIAL
+                        </div>
+                        <div class="volumes-grid">
+                            <div class="volume-item volume-pro">
+                                <div class="volume-value">0.25</div>
+                                <div class="volume-label">Conservador</div>
                             </div>
-                            <p class="small text-muted mt-2">A configuração padrão já vem otimizada para contas USD</p>
+                            <div class="volume-item volume-pro">
+                                <div class="volume-value">0.50</div>
+                                <div class="volume-label">Médio</div>
+                            </div>
+                            <div class="volume-item volume-pro">
+                                <div class="volume-value">0.85</div>
+                                <div class="volume-label">Agressivo</div>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="col-12 col-md-6 mb-3">
-                        <div class="border rounded p-3 bg-dark h-100">
-                            <h5 class="text-warning">USC (Cents)</h5>
-                            <p class="small text-light">Para contas em centavos de dólar</p>
-                            <a href="https://drive.google.com/file/d/1N0YCcz1SnN2M4XfPw8ojBTfFLPman-Cr/view?usp=drive_link" 
-                               target="_blank" 
-                               class="btn btn-outline-warning btn-sm w-100">
-                                <i class="bi bi-download"></i> Baixar Set USC
-                            </a>
+                    <div class="info-section">
+                        <div class="section-title section-title-pro">
+                            <span>🛡️</span> SISTEMA DE PROTEÇÕES
+                        </div>
+                        <div class="protecoes-grid">
+                            <div class="protecao-item">
+                                <div class="protecao-numero protecao-numero-pro">25</div>
+                                <div class="protecao-desc">Níveis de proteção</div>
+                            </div>
+                            <div class="protecao-item">
+                                <div class="protecao-numero protecao-numero-pro">25s</div>
+                                <div class="protecao-desc">Entre proteções</div>
+                            </div>
+                        </div>
+                        <div style="color: #93c5fd; font-size: 0.9em; margin-top: 12px; text-align: center;">
+                            Distâncias: 1.880 • 1.940 • 2.000 • ... • 6.140 pips
+                        </div>
+                    </div>
+                    
+                    <div class="highlight-box">
+                        <div class="highlight-text">
+                            <strong>🎯 FILTROS INTELIGENTES ATIVOS:</strong> Volatilidade • Spread • S/R Completo • ADX • Liquidity Sweep • Volume • RSI • Vela Forte • Horários Específicos
+                        </div>
+                    </div>
+                    
+                    <div class="modos-container">
+                        <div class="modos-title">
+                            <span>⚙️</span> MODOS DE OPERAÇÃO
+                        </div>
+                        <div class="modos-grid">
+                            <div class="modo-card">🔵 APENAS COMPRAS</div>
+                            <div class="modo-card">🔴 APENAS VENDAS</div>
+                            <div class="modo-card">🔄 ALTERNADO</div>
+                            <div class="modo-card">⚡ DUAL TP GLOBAL <span class="badge-dual">SIMULTÂNEO</span></div>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
-
-        <!-- Materiais Educativos -->
-        <section class="mb-4">
-            <div class="info-card">
-                <h3 class="text-light mb-3">
-                    <i class="bi bi-play-btn icon-destaque"></i>
-                    Aprenda a Operar
-                </h3>
-                
-                <h5 class="text-primary">📅 Semana de Demonstração (Aula do dia 15 eu explicamos o Robô)</h5>
-                <p class="text-light">Assista o robô operando de 15 a 19 de dezembro:</p>
-                <a href="https://drive.google.com/drive/folders/12CjEKqbsfSkncaEixNwjilukVTowiLPj" 
-                   target="_blank" 
-                   class="btn btn-info btn-sm mb-3">
-                    <i class="bi bi-folder"></i> Abrir Pasta com Vídeos
-                </a>
-                
-                <h5 class="text-primary mt-4">📚 Biblioteca Completa</h5>
-                <p class="text-light">Materiais extras incluindo operações em Mesa Proprietária:</p>
-                <a href="https://drive.google.com/drive/folders/1Qc_AIz6nDoxnZ-ZO--TVYBj5Ux7ba0kj" 
-                   target="_blank" 
-                   class="btn btn-info btn-sm">
-                    <i class="bi bi-collection"></i> Acessar Biblioteca Completa
-                </a>
-                
-                <div class="alert alert-info mt-3">
-                    <i class="bi bi-info-circle"></i>
-                    Inclui vídeos de Janeiro/2026, operações em mesas proprietárias e contas de 10k a 100k!
-                </div>
-            </div>
-        </section>
-
-        <!-- Título para Configurações Detalhadas -->
-        <section class="mb-4">
-            <div class="info-card text-center">
-                <h2 class="text-warning">
-                    <i class="bi bi-sliders"></i>
-                    Guia de Configurações do Robô
-                </h2>
-                <p class="text-light">
-                    Abaixo você encontrará explicações detalhadas de cada configuração do robô
-                </p>
-                <div class="mt-3">
-                    <span class="badge bg-primary">MetaTrader 5</span>
-                    <span class="badge bg-success">Configurações Detalhadas</span>
-                    <span class="badge bg-warning">Multi-Ativos</span>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================================== -->
-        <!-- CONFIGURAÇÕES DETALHADAS (do primeiro HTML) -->
-        <!-- =========================================== -->
-
-        <!-- Configurações Básicas -->
-        <section id="basic-config" class="mb-4">
-            <h2 class="section-title">
-                <i class="bi bi-sliders"></i> Configurações Básicas
-            </h2>
             
-            <div class="alert-custom alert-info">
-                <i class="bi bi-info-circle me-2"></i>
-                Estas são as primeiras configurações que aparecem ao adicionar o robô no gráfico.
-            </div>
-
-            <div class="row g-3">
-                <!-- Volume Inicial -->
-                <div class="col-12 col-md-6">
-                    <div class="config-card">
-                        <div class="d-flex align-items-start mb-3">
-                            <div class="step-number">1</div>
-                            <div>
-                                <h5 class="mb-2 text-light">Volume inicial</h5>
-                                <p class="text-muted mb-0">Tamanho do lote para cada operação</p>
-                            </div>
-                        </div>
-                        
-                        <div class="param-box">
-                            Volume inicial = 0.01
-                        </div>
-                        
-                        <div class="mt-3">
-                            <p class="text-light"><strong>O que significa?</strong></p>
-                            <p class="small text-light">
-                                Define quantos lotes o robô usará em cada operação. 
-                                <strong>0.01 lot</strong> é ideal para contas pequenas.
-                            </p>
-                        </div>
-                        
-                        <div class="alert-custom alert-warning mt-3">
-                            <i class="bi bi-exclamation-triangle"></i>
-                            <strong>Importante:</strong> Nunca use mais do que 1-2% do seu capital por operação.
-                        </div>
+            <!-- SCALPER FAST -->
+            <div class="robo-card">
+                <div class="robo-header header-fast">
+                    <h2>SCALPER FAST</h2>
+                    <div class="version">
+                        <span>⚡ Entradas Rápidas M5</span>
+                        <span class="version-badge">ALTA FREQUÊNCIA</span>
                     </div>
-                </div>
-
-                <!-- Take Profit -->
-                <div class="col-12 col-md-6">
-                    <div class="config-card">
-                        <div class="d-flex align-items-start mb-3">
-                            <div class="step-number">2</div>
-                            <div>
-                                <h5 class="mb-2 text-light">Take Profit (pips)</h5>
-                                <p class="text-muted mb-0">Meta de lucro para cada operação</p>
-                            </div>
-                        </div>
-                        
-                        <div class="param-box">
-                            Take Profit = 100
-                        </div>
-                        
-                        <div class="mt-3">
-                            <p class="text-light"><strong>Exemplo Prático:</strong></p>
-                            <p class="small text-light">
-                                Se você compra EURUSD a 1.10000 com Take Profit 100, 
-                                fecha automaticamente em 1.10100 (100 pips acima).
-                            </p>
-                        </div>
-                        
-                        <div class="alert-custom alert-success mt-3">
-                            <i class="bi bi-check-circle"></i>
-                            <strong>Recomendação:</strong> 50-150 pips para operações de curto prazo
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Timeframes -->
-                <div class="col-12 col-md-6">
-                    <div class="config-card">
-                        <div class="d-flex align-items-start mb-3">
-                            <div class="step-number">3</div>
-                            <div>
-                                <h5 class="mb-2 text-light">Timeframes Recomendados</h5>
-                                <p class="text-muted mb-0">Onde o sistema funciona melhor</p>
-                            </div>
-                        </div>
-                        
-                        <div class="row mt-3">
-                            <div class="col-6 text-center mb-3">
-                                <div class="border rounded p-3 bg-dark">
-                                    <h3 class="text-success mb-1">M5</h3>
-                                    <small class="text-muted">5 minutos</small>
-                                    <div class="badge bg-success badge-config mt-2">Recomendado</div>
-                                </div>
-                            </div>
-                            <div class="col-6 text-center mb-3">
-                                <div class="border rounded p-3 bg-dark">
-                                    <h3 class="text-primary mb-1">M15</h3>
-                                    <small class="text-muted">15 minutos</small>
-                                    <div class="badge bg-primary badge-config mt-2">Ótimo</div>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <p class="small mt-2 text-light">
-                            <i class="bi bi-info-circle"></i> Funciona em qualquer timeframe, mas M5 e M15 fornecem os melhores sinais.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Modo de Operação -->
-                <div class="col-12 col-md-6">
-                    <div class="config-card">
-                        <div class="d-flex align-items-start mb-3">
-                            <div class="step-number">4</div>
-                            <div>
-                                <h5 class="mb-2 text-light">Modo de Operação</h5>
-                                <p class="text-muted mb-0">Direções que o sistema pode operar</p>
-                            </div>
-                        </div>
-                        
-                        <div class="param-box">
-                            Habilita operações de VENDA = true
-                        </div>
-                        
-                        <p class="mt-3 text-light">
-                            <strong>Opções:</strong>
-                        </p>
-                        
-                        <div class="row g-2 mb-3">
-                            <div class="col-6">
-                                <div class="border rounded p-2 text-center bg-dark">
-                                    <small class="text-success">Apenas COMPRAS</small>
-                                    <p class="small text-muted mb-0">Mais conservador</p>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="border rounded p-2 text-center bg-dark">
-                                    <small class="text-primary">COMPRA e VENDA</small>
-                                    <p class="small text-muted mb-0">Mais oportunidades</p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="alert-custom alert-info mt-3">
-                            <i class="bi bi-lightbulb"></i>
-                            <strong>Dica:</strong> Comece apenas com compras até se familiarizar.
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sistema de Filtros -->
-        <section id="filters" class="mb-4">
-            <h2 class="section-title">
-                <i class="bi bi-funnel"></i> Sistema de Filtros
-            </h2>
-            
-            <div class="alert-custom alert-info mb-3">
-                <i class="bi bi-shield-check me-2"></i>
-                8 filtros de segurança devem ser atendidos simultaneamente para cada entrada.
-            </div>
-
-            <div class="row g-3">
-                <!-- Filtro 1 -->
-                <div class="col-12 col-lg-6">
-                    <div class="config-card">
-                        <div class="d-flex align-items-start mb-3">
-                            <div>
-                                <i class="bi bi-clock-history text-primary me-2"></i>
-                                <h5 class="mb-1 text-light d-inline">Filtro de maturidade do candle</h5>
-                            </div>
-                            <span class="badge bg-success ms-auto">Ativado</span>
-                        </div>
-                        
-                        <div class="param-box">
-                            Segundos para aguardar após novo candle = 40
-                        </div>
-                        
-                        <p class="mt-3 text-light">
-                            <strong>Para que serve?</strong><br>
-                            Aguarda o candle atual completar 40 segundos antes de considerar entrada.
-                        </p>
-                        
-                        <div class="alert-custom alert-warning mt-3">
-                            <i class="bi bi-exclamation-triangle"></i>
-                            Evita entradas prematuras durante formações explosivas de candles.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Filtro 2 -->
-                <div class="col-12 col-lg-6">
-                    <div class="config-card">
-                        <div class="d-flex align-items-start mb-3">
-                            <div>
-                                <i class="bi bi-arrows-expand text-warning me-2"></i>
-                                <h5 class="mb-1 text-light d-inline">Filtro range adaptativo</h5>
-                            </div>
-                            <span class="badge bg-success ms-auto">Ativado</span>
-                        </div>
-                        
-                        <div class="param-box">
-                            Ativar filtro range adaptativo = true
-                        </div>
-                        
-                        <p class="mt-3 text-light">
-                            <strong>Como funciona:</strong><br>
-                            Analisa a volatilidade do mercado e só entra quando o preço está na zona ideal.
-                        </p>
-                        
-                        <div class="row g-2 mt-3">
-                            <div class="col-6">
-                                <div class="border rounded p-2 text-center bg-dark">
-                                    <small>Período rápido: 9</small>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="border rounded p-2 text-center bg-dark">
-                                    <small>Período lento: 26</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Filtro 3 -->
-                <div class="col-12 col-lg-6">
-                    <div class="config-card">
-                        <div class="d-flex align-items-start mb-3">
-                            <div>
-                                <i class="bi bi-bar-chart text-success me-2"></i>
-                                <h5 class="mb-1 text-light d-inline">Filtro de volume</h5>
-                            </div>
-                            <span class="badge bg-success ms-auto">Ativado</span>
-                        </div>
-                        
-                        <div class="param-box">
-                            Ativar filtro de volume = true
-                        </div>
-                        
-                        <p class="mt-3 text-light">
-                            <strong>Para que serve?</strong><br>
-                            Verifica se há volume suficiente apoiando o movimento.
-                        </p>
-                        
-                        <div class="row g-2 mt-3">
-                            <div class="col-6">
-                                <div class="border rounded p-2 text-center bg-dark">
-                                    <small class="text-success">Limiar compra: 55%</small>
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="border rounded p-2 text-center bg-dark">
-                                    <small class="text-danger">Limiar venda: 55%</small>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Filtro 4 -->
-                <div class="col-12 col-lg-6">
-                    <div class="config-card">
-                        <div class="d-flex align-items-start mb-3">
-                            <div>
-                                <i class="bi bi-speedometer text-info me-2"></i>
-                                <h5 class="mb-1 text-light d-inline">Filtro RSI</h5>
-                            </div>
-                            <span class="badge bg-success ms-auto">Ativado</span>
-                        </div>
-                        
-                        <div class="param-box">
-                            Ativar filtro RSI = true
-                        </div>
-                        
-                        <p class="mt-3 text-light">
-                            <strong>Como funciona:</strong><br>
-                            Usa o indicador RSI para evitar entradas em zonas extremas.
-                        </p>
-                        
-                        <div class="row g-2 mt-3">
-                            <div class="col-4">
-                                <div class="border rounded p-2 text-center bg-dark">
-                                    <small class="text-danger">56</small>
-                                    <div class="text-muted" style="font-size: 0.7rem;">Sobrecompra</div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="border rounded p-2 text-center bg-dark">
-                                    <small>9</small>
-                                    <div class="text-muted" style="font-size: 0.7rem;">Período</div>
-                                </div>
-                            </div>
-                            <div class="col-4">
-                                <div class="border rounded p-2 text-center bg-dark">
-                                    <small class="text-success">42</small>
-                                    <div class="text-muted" style="font-size: 0.7rem;">Sobrevenda</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Filtro de Suporte e Resistência - NOVO -->
-            <div class="config-card sr-card mt-4">
-                <div class="d-flex align-items-start mb-4">
-                    <div>
-                        <i class="bi bi-pentagon fractal-icon me-2"></i>
-                        <h5 class="mb-1 text-light d-inline sr-title">Filtro de Suporte e Resistência via Fractais</h5>
-                        <span class="new-badge">NOVO na Versão 2</span>
-                    </div>
-                    <span class="badge bg-success ms-auto">Ativado</span>
                 </div>
                 
-                <div class="alert-custom alert-info mb-4" style="border-left-color: #8a2be2; background: rgba(138, 43, 226, 0.15);">
-                    <i class="bi bi-info-circle"></i>
-                    <strong>Importante:</strong> Este filtro evita que o robô entre em zonas próximas a suportes e resistências 
-                    identificadas via fractais, aumentando significativamente a taxa de acerto.
-                </div>
-                
-                <div class="row g-3">
-                    <div class="col-12 col-md-6">
-                        <div class="border rounded p-3 h-100 bg-dark">
-                            <h6 class="text-primary text-light mb-3">
-                                <i class="bi bi-toggle-on"></i> Ativação do Filtro
-                            </h6>
-                            <div class="param-box">
-                                Ativar filtro S/R = true
-                            </div>
-                            <p class="small mt-2 mb-0 text-light">
-                                <i class="bi bi-check-circle text-success"></i> 
-                                Quando ativado, o robô verifica se o preço está muito próximo de zonas de suporte/resistência
-                            </p>
-                        </div>
+                <div class="robo-content">
+                    <div class="perfil-tags">
+                        <span class="tag tag-fast">⚡ MUITAS ENTRADAS</span>
+                        <span class="tag tag-fast">🛡️ 80 PROTEÇÕES</span>
+                        <span class="tag tag-destaque">MICRO VOLUMES</span>
                     </div>
                     
-                    <div class="col-12 col-md-6">
-                        <div class="border rounded p-3 h-100 bg-dark">
-                            <h6 class="text-warning text-light mb-3">
-                                <i class="bi bi-clock-history"></i> Período para Buscar Fractais
-                            </h6>
-                            <div class="param-box">
-                                Período para buscar fractais = 20
+                    <div class="info-section">
+                        <div class="section-title section-title-fast">
+                            <span>💰</span> VOLUME INICIAL
+                        </div>
+                        <div class="volumes-grid">
+                            <div class="volume-item volume-fast">
+                                <div class="volume-value">0.01</div>
+                                <div class="volume-label">Conservador</div>
                             </div>
-                            <p class="small mt-2 mb-0 text-light">
-                                <i class="bi bi-info-circle text-info"></i> 
-                                Quantas velas para trás o sistema deve analisar para identificar fractais
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="row g-3 mt-3">
-                    <div class="col-12 col-md-6">
-                        <div class="border rounded p-3 h-100 bg-dark">
-                            <h6 class="text-success text-light mb-3">
-                                <i class="bi bi-arrows-expand"></i> Multiplicador ATR para Zona
-                            </h6>
-                            <div class="param-box">
-                                Multiplicador ATR para zona = 0.3
+                            <div class="volume-item volume-fast">
+                                <div class="volume-value">0.05</div>
+                                <div class="volume-label">Médio</div>
                             </div>
-                            <p class="small mt-2 mb-0 text-light">
-                                <i class="bi bi-rulers text-success"></i> 
-                                Define a largura da zona de S/R baseada na volatilidade atual (ATR)
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-12 col-md-6">
-                        <div class="border rounded p-3 h-100 bg-dark">
-                            <h6 class="text-danger text-light mb-3">
-                                <i class="bi bi-signpost-split"></i> Distância Mínima entre Fractais
-                            </h6>
-                            <div class="param-box">
-                                Distância mínima entre fractais ATR = 1.0
-                            </div>
-                            <p class="small mt-2 mb-0 text-light">
-                                <i class="bi bi-filter-circle text-danger"></i> 
-                                Evita a identificação de múltiplos fractais muito próximos
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="alert-custom alert-success mt-4">
-                    <i class="bi bi-shield-check"></i>
-                    <strong>Como funciona na prática:</strong> 
-                    O robô identifica os últimos fractais significativos (mínimos e máximos locais) e 
-                    cria zonas de suporte/resistência ao redor deles. Quando o preço se aproxima dessas 
-                    zonas, o robô evita entrar, pois há maior probabilidade de reversão.
-                </div>
-            </div>
-
-            <!-- Filtros Adicionais -->
-            <div class="config-card mt-3">
-                <h5 class="mb-3 text-light">
-                    <i class="bi bi-plus-circle text-primary"></i>
-                    Filtros Adicionais de Segurança
-                </h5>
-                
-                <div class="row g-3">
-                    <div class="col-6 col-md-3">
-                        <div class="border rounded p-2 text-center h-100 bg-dark">
-                            <i class="bi bi-activity text-danger mb-2 d-block"></i>
-                            <h6 class="mb-1 text-light">Volatilidade</h6>
-                            <div class="param-box mt-2">
-                                Ativar filtro de volatilidade = true
-                            </div>
-                            <p class="small mb-0 text-muted mt-2">Bloqueia se > 2x média</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-6 col-md-3">
-                        <div class="border rounded p-2 text-center h-100 bg-dark">
-                            <i class="bi bi-arrow-left-right text-warning mb-2 d-block"></i>
-                            <h6 class="mb-1 text-light">Spread</h6>
-                            <div class="param-box mt-2">
-                                Ativar filtro de spread = true
-                            </div>
-                            <p class="small mb-0 text-muted mt-2">Bloqueia se > 2x média</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-6 col-md-3">
-                        <div class="border rounded p-2 text-center h-100 bg-dark">
-                            <i class="bi bi-graph-up text-primary mb-2 d-block"></i>
-                            <h6 class="mb-1 text-light">Média Móvel 200</h6>
-                            <div class="param-box mt-2">
-                                Ativar filtro de média móvel 200 = true
-                            </div>
-                            <p class="small mb-0 text-muted mt-2">Filtro de tendência</p>
-                        </div>
-                    </div>
-                    
-                    <div class="col-6 col-md-3">
-                        <div class="border rounded p-2 text-center h-100 bg-dark">
-                            <i class="bi bi-clock text-info mb-2 d-block"></i>
-                            <h6 class="mb-1 text-light">Filtro horário</h6>
-                            <div class="param-box mt-2">
-                                Ativar filtro horário = false
-                            </div>
-                            <p class="small mb-0 text-muted mt-2">Filtro opcional</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sistema de Proteções -->
-        <section id="protections" class="mb-4">
-            <h2 class="section-title">
-                <i class="bi bi-shield-check"></i> Sistema de Proteções
-            </h2>
-            
-            <div class="alert-custom alert-info mb-3">
-                <i class="bi bi-exclamation-triangle me-2"></i>
-                Este sistema ajuda a gerenciar operações que estão em prejuízo temporário.
-            </div>
-
-            <div class="row g-3">
-                <div class="col-12 col-lg-8">
-                    <div class="config-card">
-                        <h5 class="mb-3 text-light">
-                            <i class="bi bi-layers text-primary me-2"></i>
-                            Como funciona o sistema de proteções
-                        </h5>
-                        
-                        <p class="mb-3 text-light">
-                            Quando uma operação vai contra a sua direção, o sistema automaticamente adiciona 
-                            novas operações em distâncias específicas para <strong>reduzir o preço médio</strong> 
-                            e facilitar a recuperação.
-                        </p>
-                        
-                        <div class="row">
-                            <div class="col-12 col-md-6 mb-3">
-                                <div class="border rounded p-3 h-100 bg-dark">
-                                    <h6 class="text-success text-light">
-                                        <i class="bi bi-check-circle"></i> Ativação
-                                    </h6>
-                                    <div class="param-box mt-2">
-                                        Ativar proteções = true
-                                    </div>
-                                    <p class="small mt-2 mb-0 text-light">
-                                        Habilita/desabilita todo o sistema de proteções
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <div class="col-12 col-md-6 mb-3">
-                                <div class="border rounded p-3 h-100 bg-dark">
-                                    <h6 class="text-primary text-light">
-                                        <i class="bi bi-123"></i> Quantidade
-                                    </h6>
-                                    <div class="param-box mt-2">
-                                        Quant. de proteções = 25
-                                    </div>
-                                    <p class="small mt-2 mb-0 text-light">
-                                        Máximo de proteções que podem ser adicionadas
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="alert-custom alert-warning mt-3">
-                            <i class="bi bi-exclamation-triangle"></i>
-                            <strong>Atenção:</strong> Cada proteção adiciona mais volume à operação. 
-                            Certifique-se de ter capital suficiente.
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-12 col-lg-4">
-                    <div class="config-card">
-                        <h5 class="mb-3 text-light">
-                            <i class="bi bi-clock-history text-warning"></i>
-                            Configurações de Tempo
-                        </h5>
-                        
-                        <div class="param-box">
-                            Segundos entre proteções = 4
-                        </div>
-                        
-                        <p class="mt-3 text-light">
-                            <strong>O que significa?</strong><br>
-                            Tempo mínimo de espera entre uma proteção e outra.
-                        </p>
-                        
-                        <div class="alert-custom alert-success mt-3">
-                            <i class="bi bi-shield-check"></i>
-                            Evita que múltiplas proteções sejam adicionadas muito rapidamente.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Protection Levels Table -->
-            <div class="config-card mt-3">
-                <h5 class="mb-3 text-light">
-                    <i class="bi bi-list-ol text-primary"></i>
-                    Níveis de Proteção Configurados
-                </h5>
-                
-                <div class="table-responsive">
-                    <table class="table table-sm" style="background: transparent; color: var(--light);">
-                        <thead>
-                            <tr>
-                                <th>Nível</th>
-                                <th>Distância (pips)</th>
-                                <th>Volume</th>
-                                <th>Descrição</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><span class="badge bg-primary">1</span></td>
-                                <td>900</td>
-                                <td>0.01</td>
-                                <td>Primeira proteção - leve</td>
-                            </tr>
-                            <tr>
-                                <td><span class="badge bg-success">4</span></td>
-                                <td>4.100</td>
-                                <td>0.01</td>
-                                <td>Proteção média</td>
-                            </tr>
-                            <tr>
-                                <td><span class="badge bg-warning">8</span></td>
-                                <td>6.800</td>
-                                <td>0.08</td>
-                                <td>Volume começa a aumentar</td>
-                            </tr>
-                            <tr>
-                                <td><span class="badge bg-danger">12</span></td>
-                                <td>12.200</td>
-                                <td>0.16</td>
-                                <td>Proteção avançada</td>
-                            </tr>
-                            <tr>
-                                <td><span class="badge bg-dark">24</span></td>
-                                <td>38.000</td>
-                                <td>1.60</td>
-                                <td>Última proteção disponível</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                
-                <p class="small mt-3 text-light">
-                    <i class="bi bi-info-circle"></i> O sistema tem 24 níveis de proteção configurados, 
-                    cada um com distância e volume específicos.
-                </p>
-            </div>
-        </section>
-
-        <!-- Take Profit Global -->
-        <section id="tp-global" class="mb-4">
-            <h2 class="section-title">
-                <i class="bi bi-calculator text-success"></i> Sistema de Take Profit Global
-            </h2>
-            
-            <div class="config-card" style="background: linear-gradient(90deg, rgba(13,110,253,0.1) 0%, rgba(25,135,84,0.1) 100%); border-color: rgba(25, 135, 84, 0.3);">
-                <div class="row align-items-center">
-                    <div class="col-md-8">
-                        <h4 class="text-light mb-2">
-                            <i class="bi bi-graph-up-arrow text-success"></i>
-                            O Poder do Take Profit Global
-                        </h4>
-                        <p class="text-light mb-0">
-                            Este é um dos recursos mais inteligentes do robô. Conforme as proteções 
-                            são adicionadas, o sistema <strong>recalcula automaticamente</strong> o Take Profit 
-                            para todas as posições abertas, garantindo que você saia com lucro mesmo após 
-                            adicionar múltiplas proteções.
-                        </p>
-                    </div>
-                    <div class="col-md-4 text-center">
-                        <i class="bi bi-arrow-repeat text-success display-4"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row g-3">
-                <div class="col-12 col-md-6">
-                    <div class="config-card">
-                        <h5 class="mb-3 text-light">
-                            <i class="bi bi-arrow-clockwise text-primary"></i>
-                            Como Funciona o Cálculo
-                        </h5>
-                        
-                        <div class="mb-3">
-                            <div class="d-flex mb-2">
-                                <div class="step-number small">1</div>
-                                <div>
-                                    <h6 class="text-light mb-1">Soma todos os preços de entrada</h6>
-                                    <p class="small text-muted mb-0">
-                                        Calcula a média ponderada de todas as posições abertas
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <div class="d-flex mb-2">
-                                <div class="step-number small">2</div>
-                                <div>
-                                    <h6 class="text-light mb-1">Adiciona o Take Profit configurado</h6>
-                                    <p class="small text-muted mb-0">
-                                        Adiciona os pips de lucro definidos nas configurações básicas
-                                    </p>
-                                </div>
-                            </div>
-                            
-                            <div class="d-flex">
-                                <div class="step-number small">3</div>
-                                <div>
-                                    <h6 class="text-light mb-1">Aplica a todas as posições</h6>
-                                    <p class="small text-muted mb-0">
-                                        Atualiza o Take Profit de todas as operações abertas
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="alert-custom alert-success">
-                            <i class="bi bi-check-circle"></i>
-                            <strong>Resultado:</strong> Mesmo com várias proteções, você precisa de 
-                            menos pips de movimento para fechar todas as posições com lucro.
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-12 col-md-6">
-                    <div class="config-card">
-                        <h5 class="mb-3 text-light">
-                            <i class="bi bi-eye text-warning"></i>
-                            Visualização no Dashboard
-                        </h5>
-                        
-                        <p class="text-light mb-3">
-                            No dashboard em tempo real, você pode acompanhar em que nível está o 
-                            Take Profit Global e quantos pips faltam para ser atingido.
-                        </p>
-                        
-                        <div class="border rounded p-3 mb-3 bg-dark">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <small class="text-muted">Take Profit Global Atual</small>
-                                    <h4 class="text-success mb-0">1.10540</h4>
-                                </div>
-                                <div class="text-end">
-                                    <small class="text-muted">Faltam</small>
-                                    <h4 class="text-warning mb-0">24 pips</h4>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="progress mb-3" style="height: 20px;">
-                            <div class="progress-bar bg-success" style="width: 65%">65%</div>
-                        </div>
-                        
-                        <p class="small text-light">
-                            <i class="bi bi-info-circle"></i> A barra de progresso mostra o quanto falta 
-                            para atingir o Take Profit Global atual.
-                        </p>
-                        
-                        <div class="alert-custom alert-info mt-3">
-                            <i class="bi bi-lightbulb"></i>
-                            <strong>Dica:</strong> Quanto mais proteções adicionadas, mais o Take Profit 
-                            Global se aproxima do preço atual.
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Exemplo Prático -->
-            <div class="config-card mt-3">
-                <h5 class="mb-3 text-light">
-                    <i class="bi bi-calculator-fill text-primary"></i>
-                    Exemplo Prático do TP Global
-                </h5>
-                
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="border rounded p-3 mb-3 bg-dark">
-                            <h6 class="text-light mb-3">Situação Inicial</h6>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="text-muted">1ª Entrada:</span>
-                                <span class="text-light">0.01 lot @ 1.10000</span>
-                            </div>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="text-muted">Take Profit Original:</span>
-                                <span class="text-success">1.10100 (+100 pips)</span>
+                            <div class="volume-item volume-fast">
+                                <div class="volume-value">0.10</div>
+                                <div class="volume-label">Agressivo</div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="col-md-6">
-                        <div class="border rounded p-3 mb-3 bg-dark">
-                            <h6 class="text-light mb-3">Após 2 Proteções</h6>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="text-muted">Preço Médio:</span>
-                                <span class="text-light">1.09900</span>
+                    <div class="info-section">
+                        <div class="section-title section-title-fast">
+                            <span>🛡️</span> SISTEMA DE PROTEÇÕES
+                        </div>
+                        <div class="protecoes-grid">
+                            <div class="protecao-item">
+                                <div class="protecao-numero protecao-numero-fast">80</div>
+                                <div class="protecao-desc">Níveis de proteção</div>
                             </div>
-                            <div class="d-flex justify-content-between mb-2">
-                                <span class="text-muted">Take Profit Global:</span>
-                                <span class="text-success">1.10000 (+100 pips)</span>
-                            </div>
-                            <div class="d-flex justify-content-between">
-                                <span class="text-muted">Pips Necessários:</span>
-                                <span class="text-warning">Apenas 100 pips</span>
+                            <div class="protecao-item">
+                                <div class="protecao-numero protecao-numero-fast">60s</div>
+                                <div class="protecao-desc">Entre proteções</div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                
-                <div class="alert-custom alert-success mt-3">
-                    <i class="bi bi-check-circle"></i>
-                    <strong>Conclusão:</strong> Com o TP Global, mesmo após adicionar proteções, 
-                    você precisa de menos movimento do mercado para fechar todas as posições com lucro.
-                </div>
-            </div>
-        </section>
-
-        <!-- Controle de Risco -->
-        <section id="risk-control" class="mb-4">
-            <h2 class="section-title">
-                <i class="bi bi-exclamation-triangle text-warning"></i> Controle de Risco
-            </h2>
-            
-            <div class="row g-3">
-                <div class="col-12 col-lg-6">
-                    <div class="config-card">
-                        <h5 class="mb-3 text-light">
-                            <i class="bi bi-currency-dollar text-success"></i>
-                            Stop Gain Diário
-                        </h5>
-                        
-                        <div class="param-box">
-                            Stop Gain (Ex: 100 = $1, 2000 = $20) = 1000
-                        </div>
-                        
-                        <p class="mt-3 text-light">
-                            <strong>Como funciona?</strong><br>
-                            Para todas as operações quando atinge $10 de lucro no dia (1000 USC).
-                        </p>
-                        
-                        <div class="alert-custom alert-success mt-3">
-                            <i class="bi bi-trophy"></i>
-                            <strong>Benefício:</strong> Protege seus lucros e disciplina suas operações.
-                        </div>
-                        
-                        <p class="small text-muted mt-3">
-                            <i class="bi bi-info-circle"></i>
-                            USC = "US Cents" (centavos de dólar). 100 USC = $1 USD.
-                        </p>
-                    </div>
-                </div>
-                
-                <div class="col-12 col-lg-6">
-                    <div class="config-card">
-                        <h5 class="mb-3 text-light">
-                            <i class="bi bi-currency-dollar text-danger"></i>
-                            Stop Loss Diário
-                        </h5>
-                        
-                        <div class="param-box">
-                            Stop Loss (Ex: 100 = $1, 9000 = $90) = 9000
-                        </div>
-                        
-                        <p class="mt-3 text-light">
-                            <strong>Como funciona?</strong><br>
-                            Para todas as operações quando atinge $90 de prejuízo no dia (9000 USC).
-                        </p>
-                        
-                        <div class="alert-custom alert-danger mt-3">
-                            <i class="bi bi-shield-exclamation"></i>
-                            <strong>Importante:</strong> Evita prejuízos grandes em um único dia.
-                        </div>
-                        
-                        <p class="small text-muted mt-3">
-                            <i class="bi bi-info-circle"></i>
-                            Ajuste conforme seu capital e tolerância ao risco.
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Stop Loss por Pips -->
-            <div class="config-card mt-3">
-                <h5 class="mb-3 text-light">
-                    <i class="bi bi-sign-stop text-warning"></i>
-                    Stop Loss por Pips
-                </h5>
-                
-                <div class="row g-3">
-                    <div class="col-12 col-md-4">
-                        <div class="border rounded p-3 h-100 bg-dark">
-                            <h6 class="text-primary text-light">Ativação</h6>
-                            <div class="param-box mt-2">
-                                Ativar Stop Loss por pips = false
-                            </div>
-                            <p class="small mt-2 mb-0 text-light">
-                                Para iniciantes, mantenha desativado
-                            </p>
+                        <div style="color: #fecaca; font-size: 0.9em; margin-top: 12px; text-align: center;">
+                            Distâncias: 1.880 até 47.330 pips
                         </div>
                     </div>
                     
-                    <div class="col-12 col-md-4">
-                        <div class="border rounded p-3 h-100 bg-dark">
-                            <h6 class="text-success text-light">Distância</h6>
-                            <div class="param-box mt-2">
-                                Distância em pips para o Stop Loss = 100
-                            </div>
-                            <p class="small mt-2 mb-0 text-light">
-                                Pips de distância do preço de entrada
-                            </p>
+                    <div class="highlight-box highlight-box-fast">
+                        <div class="highlight-text">
+                            <strong>⚡ FILTROS ESTRATÉGICOS:</strong> S/R Completo • Modo 20 Horas (00:00-20:00) • Detecção de GAP • Abertura Múltipla de Proteções
+                        </div>
+                        <div style="margin-top: 15px; color: #fecaca; font-weight: 500; font-size: 0.9em;">
+                            Com 0.01 inicial → volume máximo de apenas 0.64 mesmo com 80 proteções
                         </div>
                     </div>
                     
-                    <div class="col-12 col-md-4">
-                        <div class="border rounded p-3 h-100 bg-dark">
-                            <h6 class="text-warning text-light">Trailing Stop</h6>
-                            <div class="param-box mt-2">
-                                Ativar Trailing Stop = false
-                            </div>
-                            <p class="small mt-2 mb-0 text-light">
-                                Stop loss que "segue" o preço
-                            </p>
+                    <div class="modos-container">
+                        <div class="modos-title">
+                            <span>⚙️</span> MODOS DE OPERAÇÃO
+                        </div>
+                        <div class="modos-grid">
+                            <div class="modo-card">🔵 APENAS COMPRAS</div>
+                            <div class="modo-card">🔴 APENAS VENDAS</div>
+                            <div class="modo-card">🔄 ALTERNADO</div>
+                            <div class="modo-card">⚡ DUAL TP GLOBAL <span class="badge-dual">SIMULTÂNEO</span></div>
                         </div>
                     </div>
-                </div>
-                
-                <div class="alert-custom alert-info mt-3">
-                    <i class="bi bi-lightbulb"></i>
-                    <strong>Recomendação para Iniciantes:</strong> Use apenas o Stop Loss diário 
-                    até se familiarizar com o sistema.
-                </div>
-            </div>
-        </section>
-
-        <!-- Dashboard -->
-        <section id="dashboard" class="mb-4">
-            <h2 class="section-title">
-                <i class="bi bi-display"></i> Dashboard em Tempo Real
-            </h2>
-            
-            <div class="row g-3">
-                <div class="col-12 col-lg-8">
-                    <div class="config-card">
-                        <div class="d-flex align-items-start mb-3">
-                            <div>
-                                <i class="bi bi-speedometer2 text-primary me-2"></i>
-                                <h5 class="mb-1 text-light d-inline">Painel de Controle em Tempo Real</h5>
-                            </div>
-                            <span class="badge bg-success ms-auto">Recomendado</span>
-                        </div>
-                        
-                        <p class="mb-3 text-light">
-                            Mostra todas as informações importantes diretamente no gráfico do MetaTrader, 
-                            sem precisar abrir outras janelas.
-                        </p>
-                        
-                        <div class="row g-2">
-                            <div class="col-6 col-md-3">
-                                <div class="border rounded p-2 text-center bg-dark">
-                                    <i class="bi bi-graph-up text-success d-block mb-1"></i>
-                                    <small class="text-light">Lucro/Prejuízo</small>
-                                </div>
-                            </div>
-                            
-                            <div class="col-6 col-md-3">
-                                <div class="border rounded p-2 text-center bg-dark">
-                                    <i class="bi bi-list-check text-primary d-block mb-1"></i>
-                                    <small class="text-light">Estatísticas</small>
-                                </div>
-                            </div>
-                            
-                            <div class="col-6 col-md-3">
-                                <div class="border rounded p-2 text-center bg-dark">
-                                    <i class="bi bi-shield-check text-warning d-block mb-1"></i>
-                                    <small class="text-light">Status Filtros</small>
-                                </div>
-                            </div>
-                            
-                            <div class="col-6 col-md-3">
-                                <div class="border rounded p-2 text-center bg-dark">
-                                    <i class="bi bi-clock-history text-info d-block mb-1"></i>
-                                    <small class="text-light">TP Global</small>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="alert-custom alert-success mt-3">
-                            <i class="bi bi-check-circle"></i>
-                            <strong>Vantagem:</strong> Monitoramento completo em um só lugar - fácil e prático.
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-12 col-lg-4">
-                    <div class="config-card">
-                        <h5 class="mb-3 text-light">
-                            <i class="bi bi-gear text-warning"></i>
-                            Configurações do Dashboard
-                        </h5>
-                        
-                        <div class="mb-3">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="dashboardSwitch" checked>
-                                <label class="form-check-label text-light" for="dashboardSwitch">
-                                    Ativar dashboard
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="mb-3">
-                            <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" id="positionsSwitch" checked>
-                                <label class="form-check-label text-light" for="positionsSwitch">
-                                    Mostrar posições abertas
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div class="mt-3">
-                            <h6 class="text-light">Posicionamento</h6>
-                            <div class="row g-2">
-                                <div class="col-6">
-                                    <input type="number" class="form-control form-control-sm bg-dark border-secondary text-light" value="20" placeholder="Posição X">
-                                </div>
-                                <div class="col-6">
-                                    <input type="number" class="form-control form-control-sm bg-dark border-secondary text-light" value="50" placeholder="Posição Y">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <p class="small text-muted mt-3">
-                            <i class="bi bi-arrows-move"></i>
-                            Pode ser movido para qualquer lugar no gráfico
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="footer py-4" style="background: #1a1a1a;">
-        <div class="container">
-            <div class="row">
-                <div class="col-12 text-center">
-                    <p class="text-light mb-2">
-                        <i class="bi bi-robot text-warning"></i>
-                        Robô Forex PRO
-                    </p>
-                    <p class="small text-muted">
-                        © 2024 - Guia Completo para Clientes
-                        <br>
-                        <i class="bi bi-exclamation-triangle text-danger"></i>
-                        Trading envolve riscos. Use apenas capital que possa perder.
-                    </p>
                 </div>
             </div>
         </div>
-    </footer>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
-    <script>
-        // Scroll suave para links internos
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
         
-        // Adiciona classes para links externos
-        document.querySelectorAll('a[href^="http"]').forEach(link => {
-            link.setAttribute('target', '_blank');
-            link.setAttribute('rel', 'noopener noreferrer');
-        });
-        
-        // Switch functionality
-        document.querySelectorAll('.form-check-input').forEach(switchEl => {
-            switchEl.addEventListener('change', function() {
-                const isChecked = this.checked;
-                const label = this.nextElementSibling;
+        <!-- FOOTER COMPARATIVO PROFISSIONAL -->
+        <div class="comparativo-footer">
+            <div class="footer-title">O que ambos compartilham</div>
+            
+            <div class="caracteristicas-grid">
+                <div class="caracteristica-col">
+                    <h3><span>⚡</span> TECNOLOGIA DUAL TP</h3>
+                    <ul>
+                        <li><span>✓</span> Dual TP Global - posições independentes</li>
+                        <li><span>✓</span> Detecção inteligente de GAP</li>
+                        <li><span>✓</span> Abertura múltipla de proteções</li>
+                        <li><span>✓</span> Proteções automáticas por volume</li>
+                    </ul>
+                </div>
                 
-                if(label.textContent.includes('Ativar')) {
-                    label.textContent = isChecked ? 'Ativar dashboard' : 'Desativar dashboard';
-                } else if(label.textContent.includes('Mostrar')) {
-                    label.textContent = isChecked ? 'Mostrar posições abertas' : 'Esconder posições abertas';
-                }
-            });
-        });
-    </script>
+                <div class="caracteristica-col">
+                    <h3><span>📊</span> RECURSOS PROFISSIONAIS</h3>
+                    <ul>
+                        <li><span>✓</span> Dashboard futurista em tempo real</li>
+                        <li><span>✓</span> Stop Gain / Stop Loss configuráveis</li>
+                        <li><span>✓</span> Verificação de licença por URL</li>
+                        <li><span>✓</span> Magic Number exclusivo</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px; color: #8f9bb3; font-size: 0.9em; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px;">
+                SCALPER TRADING SYSTEMS • 2026 • Escolha seu perfil: <strong style="color: #93c5fd;">PRO 4.0</strong> para consistência cirúrgica | <strong style="color: #fecaca;">FAST</strong> para alta frequência com segurança
+            </div>
+        </div>
+    </div>
 </body>
 </html>
