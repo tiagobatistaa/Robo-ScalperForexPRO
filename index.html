@@ -221,56 +221,28 @@
             min-width: 22px;
         }
         
-        /* Estilo para a prévia do YouTube */
-        .youtube-preview {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            background: #1a2538;
-            border-radius: 60px;
-            padding: 8px 16px 8px 8px;
+        /* Estilo para o player do YouTube incorporado */
+        .youtube-embed {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
             margin: 18px 0 8px;
-            border: 1px solid #3a4a6b;
-            transition: all 0.2s;
-            text-decoration: none;
-            color: white;
+            border: 2px solid #3a4a6b;
+            transition: all 0.3s;
+            aspect-ratio: 16 / 9;
+            background: #000;
         }
         
-        .youtube-preview:hover {
-            background: #253b55;
+        .youtube-embed:hover {
             border-color: #ff4d4d;
-            transform: translateY(-2px);
+            transform: scale(1.02);
+            box-shadow: 0 10px 20px rgba(255, 77, 77, 0.3);
         }
         
-        .youtube-icon {
-            background: #ff4d4d;
-            width: 40px;
-            height: 40px;
-            border-radius: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
-        }
-        
-        .youtube-preview .video-info {
-            flex: 1;
-        }
-        
-        .youtube-preview .video-info .video-title {
-            font-weight: 700;
-            font-size: 0.95rem;
-            margin-bottom: 2px;
-        }
-        
-        .youtube-preview .video-info .video-desc {
-            font-size: 0.7rem;
-            color: #aabbdd;
-        }
-        
-        .youtube-preview .play-icon {
-            color: #ff4d4d;
-            font-size: 1.3rem;
+        .youtube-embed iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
         
         .video-link {
@@ -284,10 +256,11 @@
             text-decoration: none;
             color: white;
             border: 1px solid #374b70;
-            transition: background 0.2s;
+            transition: all 0.2s;
         }
         .video-link:hover {
             background: #2c3e60;
+            border-color: #ff4d4d;
         }
         .video-link i:first-child {
             font-size: 1.6rem;
@@ -559,6 +532,13 @@
             font-size: 0.75rem;
             color: #7f8aa8;
         }
+        
+        /* Ajustes para mobile */
+        @media (max-width: 600px) {
+            .youtube-embed:hover {
+                transform: scale(1.01);
+            }
+        }
     </style>
 </head>
 <body>
@@ -585,15 +565,10 @@
                 <div class="banca"><i class="fas fa-chart-line"></i> Banca: $50 / $170 / $300</div>
                 <ul class="features"><li><i class="fas fa-check-circle"></i> Entradas infinitas · 4 modos</li><li><i class="fas fa-shield-alt"></i> 80 níveis de proteção</li><li><i class="fas fa-clock"></i> 20h/dia (00:00–20:00)</li></ul>
                 
-                <!-- Caixa de vídeo do YouTube para FAST -->
-                <a href="https://youtu.be/YUAcmkbP2uI" target="_blank" class="youtube-preview">
-                    <div class="youtube-icon"><i class="fab fa-youtube"></i></div>
-                    <div class="video-info">
-                        <div class="video-title">⚡ ROBÔ FAST COMPLETO</div>
-                        <div class="video-desc">20h/dia · 80 proteções · metas diárias</div>
-                    </div>
-                    <i class="fas fa-play-circle play-icon"></i>
-                </a>
+                <!-- Player do YouTube incorporado para FAST -->
+                <div class="youtube-embed">
+                    <iframe src="https://www.youtube.com/embed/YUAcmkbP2uI" title="Robô FAST" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
                 
                 <a href="https://drive.google.com/drive/folders/1x-kCcrwVTlPHtptBcKeK84Oxze13rafI" target="_blank" class="video-link"><i class="fas fa-play-circle"></i><span>Ver + vídeos do FAST</span><i class="fas fa-chevron-right"></i></a>
             </div>
@@ -604,15 +579,10 @@
                 <div class="banca"><i class="fas fa-chart-line"></i> Banca: $100 / $200 / $350</div>
                 <ul class="features"><li><i class="fas fa-check-circle"></i> Menos entradas · seletividade</li><li><i class="fas fa-code-branch"></i> 4 modos de operação</li><li><i class="fas fa-chart-bar"></i> Filtro S/R completo</li></ul>
                 
-                <!-- Caixa de vídeo do YouTube para 4.0 DUAL TP -->
-                <a href="https://youtu.be/lsXRIau4UlI" target="_blank" class="youtube-preview">
-                    <div class="youtube-icon"><i class="fab fa-youtube"></i></div>
-                    <div class="video-info">
-                        <div class="video-title">🔥 4.0 DUAL TP SELETIVO</div>
-                        <div class="video-desc">Menos entradas · filtro S/R · precisão</div>
-                    </div>
-                    <i class="fas fa-play-circle play-icon"></i>
-                </a>
+                <!-- Player do YouTube incorporado para 4.0 DUAL TP -->
+                <div class="youtube-embed">
+                    <iframe src="https://www.youtube.com/embed/lsXRIau4UlI" title="Robô 4.0 DUAL TP" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
                 
                 <a href="https://drive.google.com/drive/folders/1x-kCcrwVTlPHtptBcKeK84Oxze13rafI" target="_blank" class="video-link"><i class="fas fa-play-circle"></i><span>Ver + vídeos do 4.0</span><i class="fas fa-chevron-right"></i></a>
             </div>
@@ -624,15 +594,10 @@
                 <div class="banca"><i class="fas fa-chart-line"></i> Banca: $400 USD</div>
                 <ul class="features"><li><i class="fas fa-check-circle"></i> Limite 5 entradas/dia</li><li><i class="fas fa-filter"></i> Filtros avançados</li><li><i class="fas fa-stopwatch"></i> Stop Gain/Loss diário</li></ul>
                 
-                <!-- Caixa de vídeo do YouTube para 2.0 USD -->
-                <a href="https://youtu.be/0dicyLT37X8" target="_blank" class="youtube-preview">
-                    <div class="youtube-icon"><i class="fab fa-youtube"></i></div>
-                    <div class="video-info">
-                        <div class="video-title">💵 2.0 USD FTMO</div>
-                        <div class="video-desc">5 trades/dia · meta $50 · stop automático</div>
-                    </div>
-                    <i class="fas fa-play-circle play-icon"></i>
-                </a>
+                <!-- Player do YouTube incorporado para 2.0 USD -->
+                <div class="youtube-embed">
+                    <iframe src="https://www.youtube.com/embed/0dicyLT37X8" title="Robô 2.0 USD" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
                 
                 <a href="https://drive.google.com/drive/folders/1x-kCcrwVTlPHtptBcKeK84Oxze13rafI" target="_blank" class="video-link"><i class="fas fa-play-circle"></i><span>Ver + vídeos do 2.0 USD</span><i class="fas fa-chevron-right"></i></a>
             </div>
