@@ -1,671 +1,710 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scalper PRO 4.0 vs Scalper FAST • Comparativo Profissional</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Scalper PRO · Clientes reais · Resultados diários</title>
+    <!-- Fonte moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
-        
+
         body {
-            background: #0a0c12;
+            font-family: 'Inter', sans-serif;
+            background: #0b0f17;
+            color: #f0f4fa;
+            line-height: 1.5;
+            padding: 16px 12px 40px;
             min-height: 100vh;
-            padding: 40px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
-        
+
         .container {
-            max-width: 1300px;
+            max-width: 1200px;
+            width: 100%;
             margin: 0 auto;
         }
-        
-        /* Header com efeito glassmorphism */
-        .header {
+
+        /* cabeçalho com link do telegram */
+        .hero {
             text-align: center;
-            margin-bottom: 60px;
-            position: relative;
+            margin-bottom: 28px;
         }
-        
-        .header h1 {
-            font-size: 3.5em;
+
+        .hero h1 {
+            font-size: 2.2rem;
             font-weight: 800;
-            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #ffd966, #b3e0ff);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            margin-bottom: 15px;
-            letter-spacing: -0.02em;
-        }
-        
-        .header .subtitle {
-            color: #8f9bb3;
-            font-size: 1.2em;
-            max-width: 700px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-        
-        .header-glow {
-            position: absolute;
-            top: -100px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(79, 114, 202, 0.2) 0%, transparent 70%);
-            filter: blur(60px);
-            z-index: -1;
-        }
-        
-        /* Cards container */
-        .robos-container {
-            display: flex;
-            gap: 30px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 60px;
-        }
-        
-        /* Card base com efeito moderno */
-        .robo-card {
-            flex: 1;
-            min-width: 400px;
-            background: rgba(18, 22, 32, 0.95);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 40px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-        }
-        
-        .robo-card:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.9);
-            border-color: rgba(255, 255, 255, 0.1);
-        }
-        
-        /* Efeito de brilho nas bordas */
-        .robo-card::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, transparent 40%, rgba(255,255,255,0.1) 50%, transparent 60%);
-            border-radius: 42px;
-            opacity: 0;
-            transition: opacity 0.5s;
-            pointer-events: none;
-        }
-        
-        .robo-card:hover::before {
-            opacity: 1;
-        }
-        
-        /* Headers com gradientes exclusivos */
-        .robo-header {
-            padding: 40px 40px 30px;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header-pro {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
-            border-bottom: 1px solid rgba(59, 130, 246, 0.3);
-        }
-        
-        .header-fast {
-            background: linear-gradient(135deg, #2d1a1a 0%, #1a0f0f 100%);
-            border-bottom: 1px solid rgba(239, 68, 68, 0.3);
-        }
-        
-        .robo-header h2 {
-            font-size: 2.5em;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 8px;
-            letter-spacing: -0.01em;
-        }
-        
-        .robo-header .version {
-            font-size: 1.1em;
-            opacity: 0.8;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .version-badge {
-            background: rgba(255,255,255,0.1);
-            padding: 4px 12px;
-            border-radius: 100px;
-            font-size: 0.8em;
-            font-weight: 600;
-            letter-spacing: 0.05em;
-        }
-        
-        /* Conteúdo do card */
-        .robo-content {
-            padding: 30px 40px 40px;
-        }
-        
-        /* Tags de destaque */
-        .perfil-tags {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-            margin-bottom: 30px;
-        }
-        
-        .tag {
-            padding: 8px 18px;
-            border-radius: 100px;
-            font-size: 0.9em;
-            font-weight: 600;
-            letter-spacing: 0.02em;
-        }
-        
-        .tag-pro {
-            background: rgba(59, 130, 246, 0.15);
-            color: #93c5fd;
-            border: 1px solid rgba(59, 130, 246, 0.3);
-        }
-        
-        .tag-fast {
-            background: rgba(239, 68, 68, 0.15);
-            color: #fecaca;
-            border: 1px solid rgba(239, 68, 68, 0.3);
-        }
-        
-        .tag-destaque {
-            background: linear-gradient(135deg, #f59e0b, #fbbf24);
-            color: #000;
-            font-weight: 700;
-        }
-        
-        /* Seções de informações */
-        .info-section {
-            margin-bottom: 35px;
-        }
-        
-        .section-title {
-            font-size: 1.1em;
-            font-weight: 600;
-            color: #a5b4fc;
-            margin-bottom: 20px;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .section-title-pro {
-            color: #93c5fd;
-        }
-        
-        .section-title-fast {
-            color: #fecaca;
-        }
-        
-        /* Grid de volumes */
-        .volumes-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-            margin-top: 10px;
-        }
-        
-        .volume-item {
-            background: rgba(255,255,255,0.03);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 15px 10px;
-            text-align: center;
-            transition: all 0.3s;
-        }
-        
-        .volume-item:hover {
-            background: rgba(255,255,255,0.06);
-            border-color: rgba(255,255,255,0.1);
-            transform: translateY(-3px);
-        }
-        
-        .volume-value {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: white;
+            background-clip: text;
+            margin-bottom: 6px;
             line-height: 1.2;
         }
-        
-        .volume-label {
-            font-size: 0.8em;
-            color: #8f9bb3;
-            margin-top: 5px;
+
+        .hero .sub {
+            font-size: 1rem;
+            color: #9aa8c7;
+            margin-bottom: 18px;
+            font-weight: 400;
         }
-        
-        .volume-pro .volume-value {
-            color: #93c5fd;
-        }
-        
-        .volume-fast .volume-value {
-            color: #fecaca;
-        }
-        
-        /* Grid de proteções */
-        .protecoes-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-        }
-        
-        .protecao-item {
-            background: rgba(255,255,255,0.03);
-            border-radius: 20px;
-            padding: 18px;
-            border: 1px solid rgba(255,255,255,0.05);
-        }
-        
-        .protecao-numero {
-            font-size: 2.2em;
-            font-weight: 700;
+
+        .telegram-card {
+            background: #1f2a47;
+            border-radius: 28px;
+            padding: 14px 18px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            text-decoration: none;
             color: white;
-            line-height: 1;
+            margin: 18px 0 16px;
+            border: 1px solid #3b4a6b;
+            transition: all 0.2s;
         }
-        
-        .protecao-desc {
-            font-size: 0.8em;
-            color: #8f9bb3;
-            margin-top: 5px;
+
+        .telegram-card:hover {
+            background: #2a3a60;
+            border-color: #5f8aff;
         }
-        
-        .protecao-numero-pro {
-            color: #93c5fd;
-        }
-        
-        .protecao-numero-fast {
-            color: #fecaca;
-        }
-        
-        /* Lista de recursos */
-        .recursos-lista {
-            list-style: none;
-        }
-        
-        .recurso-item {
+
+        .telegram-left {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 15px;
-            color: #d1d5db;
-            font-size: 1em;
         }
-        
-        .recurso-icon {
-            width: 28px;
-            height: 28px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.03);
-            border-radius: 10px;
-            font-size: 1.2em;
+
+        .telegram-left i {
+            font-size: 2.2rem;
+            color: #29a9e1;
         }
-        
-        .recurso-destaque {
-            color: white;
+
+        .telegram-left span {
             font-weight: 600;
+            font-size: 1.2rem;
         }
-        
-        /* Modos de operação - design elegante */
-        .modos-container {
-            background: rgba(0,0,0,0.3);
+
+        .telegram-card .arrow {
+            font-size: 1.4rem;
+            opacity: 0.8;
+        }
+
+        /* Grid de cards dos robôs */
+        .robots-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin: 24px 0 30px;
+        }
+
+        @media (max-width: 900px) {
+            .robots-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 600px) {
+            .robots-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .robot-card {
+            background: #131b2b;
+            border-radius: 36px;
+            padding: 24px 20px 22px;
+            border: 1px solid #25324b;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.7);
+            transition: transform 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .robot-card:active {
+            transform: scale(0.99);
+        }
+
+        .card-fast {
+            border-top: 5px solid #6cd4b2;
+            background: linear-gradient(145deg, #10221e, #131b2b);
+        }
+        .card-pro {
+            border-top: 5px solid #f9c74f;
+            background: linear-gradient(145deg, #241e12, #131b2b);
+        }
+        .card-usd {
+            border-top: 5px solid #f9844a;
+            background: linear-gradient(145deg, #281a12, #131b2b);
+        }
+
+        .robot-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .robot-name {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            line-height: 1.2;
+        }
+
+        .badge {
+            background: #25344f;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #cddbf7;
+            white-space: nowrap;
+        }
+
+        .gain-target {
+            background: #00000030;
             border-radius: 24px;
-            padding: 25px;
-            margin-top: 30px;
-            border: 1px solid rgba(255,255,255,0.03);
+            padding: 14px 16px;
+            margin: 15px 0 14px;
+            border-left: 4px solid;
+            backdrop-filter: blur(4px);
         }
-        
-        .modos-title {
+
+        .gain-big {
+            font-size: 2rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+
+        .meta-diaria {
+            font-size: 0.9rem;
+            color: #b0f0d0;
+            margin-top: 4px;
+            font-weight: 500;
+        }
+        .banca {
+            font-size: 0.95rem;
+            background: #1f293d;
+            padding: 10px 14px;
+            border-radius: 40px;
+            display: inline-block;
+            margin: 6px 0 12px;
+        }
+        .features {
+            list-style: none;
+            margin: 18px 0 12px;
+            flex-grow: 1;
+        }
+        .features li {
             display: flex;
             align-items: center;
             gap: 10px;
-            color: #a5b4fc;
-            font-size: 0.9em;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            color: #cddcff;
+        }
+        .features i.fa-check-circle {
+            color: #5cb85c;
+            font-size: 1.2rem;
+            min-width: 22px;
+        }
+        .video-link {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #1f2c40;
+            padding: 14px 18px;
+            border-radius: 60px;
+            margin: 18px 0 4px;
+            text-decoration: none;
+            color: white;
+            border: 1px solid #374b70;
+            transition: background 0.2s;
+        }
+        .video-link:hover {
+            background: #2c3e60;
+        }
+        .video-link i:first-child {
+            font-size: 1.6rem;
+            color: #ff4d4d;
+        }
+        .video-link span {
             font-weight: 600;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            margin-bottom: 20px;
+            flex: 1;
+            margin-left: 14px;
         }
-        
-        .modos-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
+
+        /* ===== SEÇÃO DE CLIENTES ===== */
+        .client-section {
+            margin: 60px 0 40px;
         }
-        
-        .modo-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.03);
-            border-radius: 16px;
-            padding: 12px;
-            text-align: center;
-            font-size: 0.9em;
-            color: #e2e8f0;
-            transition: all 0.2s;
-        }
-        
-        .modo-card:hover {
-            background: rgba(255,255,255,0.05);
-            border-color: rgba(255,255,255,0.1);
-            transform: scale(1.02);
-        }
-        
-        /* Badge DUAL TP */
-        .badge-dual {
-            display: inline-block;
-            background: linear-gradient(135deg, #6366f1, #8b5cf6);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 100px;
-            font-size: 0.7em;
-            font-weight: 600;
-            margin-left: 8px;
-            letter-spacing: 0.02em;
-        }
-        
-        /* Box de destaque */
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(79, 114, 202, 0.1) 0%, transparent 100%);
-            border: 1px solid rgba(79, 114, 202, 0.2);
-            border-radius: 20px;
-            padding: 20px;
-            margin: 25px 0;
-        }
-        
-        .highlight-box-fast {
-            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1) 0%, transparent 100%);
-            border-color: rgba(239, 68, 68, 0.2);
-        }
-        
-        .highlight-text {
-            color: #e2e8f0;
-            font-size: 0.95em;
-            line-height: 1.6;
-        }
-        
-        .highlight-text strong {
-            color: white;
-        }
-        
-        /* Footer comparativo */
-        .comparativo-footer {
-            background: rgba(18, 22, 32, 0.8);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.03);
-            border-radius: 40px;
-            padding: 40px;
-            margin-top: 40px;
-        }
-        
-        .footer-title {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: white;
+
+        .section-header {
             text-align: center;
             margin-bottom: 30px;
         }
-        
-        .caracteristicas-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff, #b0d0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 8px;
         }
-        
-        .caracteristica-col h3 {
-            color: #a5b4fc;
-            font-size: 1.2em;
-            margin-bottom: 20px;
+
+        .section-header p {
+            color: #a0b5d9;
+            font-size: 1.1rem;
+        }
+
+        .section-header p i {
+            color: #29a9e1;
+            margin-right: 6px;
+        }
+
+        /* Carrossel horizontal suave */
+        .testimonial-carousel {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding: 15px 5px 25px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: thin;
+            scrollbar-color: #4a5f82 #1f2a40;
+        }
+
+        .testimonial-carousel::-webkit-scrollbar {
+            height: 8px;
+        }
+        .testimonial-carousel::-webkit-scrollbar-track {
+            background: #1f2a40;
+            border-radius: 10px;
+        }
+        .testimonial-carousel::-webkit-scrollbar-thumb {
+            background: #4a5f82;
+            border-radius: 10px;
+        }
+
+        .testimonial-card {
+            flex: 0 0 auto;
+            width: 280px;
+            background: #14212b;
+            border-radius: 32px;
+            padding: 20px 16px 16px;
+            border: 1px solid #2d4a5a;
+            scroll-snap-align: start;
+            box-shadow: 0 10px 20px -5px #00000080;
+            transition: transform 0.2s;
+            cursor: pointer;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            border-color: #5f8aff;
+        }
+
+        .client-image {
+            width: 100%;
+            height: 180px;
+            border-radius: 24px;
+            overflow: hidden;
+            margin-bottom: 16px;
+            background: #1e3340;
             display: flex;
             align-items: center;
-            gap: 10px;
+            justify-content: center;
+            border: 1px solid #3c5a70;
+            transition: all 0.2s;
         }
-        
-        .caracteristica-col ul {
-            list-style: none;
+
+        .testimonial-card:hover .client-image {
+            border-color: #f5c542;
         }
-        
-        .caracteristica-col li {
-            color: #d1d5db;
-            margin-bottom: 12px;
+
+        .client-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .client-meta {
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-        
-        .caracteristica-col li span {
-            color: #4ade80;
+            gap: 6px;
+            margin: 10px 0 6px;
+            color: #b0e0a0;
             font-weight: 600;
+            font-size: 0.9rem;
         }
-        
-        /* Responsividade */
-        @media (max-width: 900px) {
-            .robo-card {
-                min-width: 100%;
+
+        .client-meta i {
+            color: #f9c74f;
+        }
+
+        .testimonial-card p {
+            font-size: 0.95rem;
+            color: #cfdef5;
+            margin: 12px 0 8px;
+            line-height: 1.4;
+        }
+
+        .client-date {
+            font-size: 0.75rem;
+            color: #6f8bb0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 8px;
+        }
+
+        /* ===== MODAL PARA IMAGENS ===== */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 9999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            max-width: 90vw;
+            max-height: 90vh;
+            position: relative;
+            animation: zoomIn 0.3s ease;
+        }
+
+        @keyframes zoomIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
             }
-            
-            .header h1 {
-                font-size: 2.5em;
+            to {
+                opacity: 1;
+                transform: scale(1);
             }
-            
-            .caracteristicas-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+        }
+
+        .modal-content img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: rgba(0,0,0,0.5);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+
+        .close-modal:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.1);
+        }
+
+        .modal-caption {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            color: white;
+            font-size: 1rem;
+            background: rgba(0,0,0,0.6);
+            padding: 8px 16px;
+            border-radius: 30px;
+            backdrop-filter: blur(4px);
+        }
+
+        @media (max-width: 600px) {
+            .testimonial-card {
+                width: 240px;
             }
+            .client-image {
+                height: 160px;
+            }
+            .close-modal {
+                top: -30px;
+                right: -10px;
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
+
+        .cta-button {
+            display: block;
+            background: #f5c542;
+            color: #0b0f17;
+            font-weight: 700;
+            font-size: 1.3rem;
+            padding: 18px 16px;
+            border-radius: 60px;
+            text-align: center;
+            text-decoration: none;
+            margin: 24px 0 12px;
+            box-shadow: 0 10px 20px -8px #f5c54250;
+            transition: all 0.2s;
+        }
+
+        .cta-button:hover {
+            background: #ffd966;
+            box-shadow: 0 15px 25px -6px #f5c54290;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #5e739b;
+            font-size: 0.85rem;
+            margin-top: 28px;
+            border-top: 1px solid #1f2a3c;
+            padding-top: 20px;
+        }
+
+        .disclaimer {
+            background: #0e1420;
+            padding: 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            color: #7f8aa8;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
-            <div class="header-glow"></div>
-            <h1>SCALPER TRADING SYSTEMS</h1>
-            <div class="subtitle">Escolha a estratégia que combina com seu perfil: <strong>consistência cirúrgica</strong> ou <strong>alta frequência</strong></div>
+        <!-- Cabeçalho com Telegram -->
+        <div class="hero">
+            <h1>SCALPER PRO</h1>
+            <div class="sub">3 estratégias · 3 objetivos · um só resultado</div>
+            <a href="https://t.me/+Nq0cz0CVbxowY2Q5" target="_blank" class="telegram-card">
+                <div class="telegram-left">
+                    <i class="fab fa-telegram-plane"></i>
+                    <span>Grupo VIP no Telegram</span>
+                </div>
+                <i class="fas fa-chevron-right arrow"></i>
+            </a>
         </div>
-        
-        <div class="robos-container">
-            <!-- SCALPER PRO 4.0 -->
-            <div class="robo-card">
-                <div class="robo-header header-pro">
-                    <h2>SCALPER PRO 4.0</h2>
-                    <div class="version">
-                        <span>⚡ Dual TP Global</span>
-                        <span class="version-badge">CONSISTÊNCIA</span>
-                    </div>
-                </div>
-                
-                <div class="robo-content">
-                    <div class="perfil-tags">
-                        <span class="tag tag-pro">🎯 ASSERTIVIDADE CIRÚRGICA</span>
-                        <span class="tag tag-pro">🛡️ PROTEÇÃO MÁXIMA</span>
-                    </div>
-                    
-                    <div class="info-section">
-                        <div class="section-title section-title-pro">
-                            <span>💰</span> VOLUME INICIAL
-                        </div>
-                        <div class="volumes-grid">
-                            <div class="volume-item volume-pro">
-                                <div class="volume-value">0.25</div>
-                                <div class="volume-label">Conservador</div>
-                            </div>
-                            <div class="volume-item volume-pro">
-                                <div class="volume-value">0.50</div>
-                                <div class="volume-label">Médio</div>
-                            </div>
-                            <div class="volume-item volume-pro">
-                                <div class="volume-value">0.85</div>
-                                <div class="volume-label">Agressivo</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="info-section">
-                        <div class="section-title section-title-pro">
-                            <span>🛡️</span> SISTEMA DE PROTEÇÕES
-                        </div>
-                        <div class="protecoes-grid">
-                            <div class="protecao-item">
-                                <div class="protecao-numero protecao-numero-pro">25</div>
-                                <div class="protecao-desc">Níveis de proteção</div>
-                            </div>
-                            <div class="protecao-item">
-                                <div class="protecao-numero protecao-numero-pro">25s</div>
-                                <div class="protecao-desc">Entre proteções</div>
-                            </div>
-                        </div>
-                        <div style="color: #93c5fd; font-size: 0.9em; margin-top: 12px; text-align: center;">
-                            Distâncias: 1.880 • 1.940 • 2.000 • ... • 6.140 pips
-                        </div>
-                    </div>
-                    
-                    <div class="highlight-box">
-                        <div class="highlight-text">
-                            <strong>🎯 FILTROS INTELIGENTES ATIVOS:</strong> Volatilidade • Spread • S/R Completo • ADX • Liquidity Sweep • Volume • RSI • Vela Forte • Horários Específicos
-                        </div>
-                    </div>
-                    
-                    <div class="modos-container">
-                        <div class="modos-title">
-                            <span>⚙️</span> MODOS DE OPERAÇÃO
-                        </div>
-                        <div class="modos-grid">
-                            <div class="modo-card">🔵 APENAS COMPRAS</div>
-                            <div class="modo-card">🔴 APENAS VENDAS</div>
-                            <div class="modo-card">🔄 ALTERNADO</div>
-                            <div class="modo-card">⚡ DUAL TP GLOBAL <span class="badge-dual">SIMULTÂNEO</span></div>
-                        </div>
-                    </div>
-                </div>
+
+        <!-- Cards dos robôs -->
+        <div class="robots-grid">
+            <!-- FAST -->
+            <div class="robot-card card-fast">
+                <div class="robot-header"><span class="robot-name">⚡ FAST</span><span class="badge"><i class="fas fa-clock"></i> 20h/dia</span></div>
+                <div class="gain-target" style="border-left-color: #6cd4b2;"><p><span class="gain-big">6 → 20 → 60USD</span></p><div class="meta-diaria"><i class="fas fa-calendar-day"></i> ganhos por dia</div></div>
+                <div class="banca"><i class="fas fa-chart-line"></i> Banca: $50 / $170 / $300</div>
+                <ul class="features"><li><i class="fas fa-check-circle"></i> Entradas infinitas · 4 modos</li><li><i class="fas fa-shield-alt"></i> 80 níveis de proteção</li><li><i class="fas fa-clock"></i> 20h/dia (00:00–20:00)</li></ul>
+                <a href="https://drive.google.com/drive/folders/1x-kCcrwVTlPHtptBcKeK84Oxze13rafI" target="_blank" class="video-link"><i class="fas fa-play-circle"></i><span>Ver FAST</span><i class="fas fa-chevron-right"></i></a>
             </div>
-            
-            <!-- SCALPER FAST -->
-            <div class="robo-card">
-                <div class="robo-header header-fast">
-                    <h2>SCALPER FAST</h2>
-                    <div class="version">
-                        <span>⚡ Entradas Rápidas M5</span>
-                        <span class="version-badge">ALTA FREQUÊNCIA</span>
-                    </div>
-                </div>
-                
-                <div class="robo-content">
-                    <div class="perfil-tags">
-                        <span class="tag tag-fast">⚡ MUITAS ENTRADAS</span>
-                        <span class="tag tag-fast">🛡️ 80 PROTEÇÕES</span>
-                        <span class="tag tag-destaque">MICRO VOLUMES</span>
-                    </div>
-                    
-                    <div class="info-section">
-                        <div class="section-title section-title-fast">
-                            <span>💰</span> VOLUME INICIAL
-                        </div>
-                        <div class="volumes-grid">
-                            <div class="volume-item volume-fast">
-                                <div class="volume-value">0.01</div>
-                                <div class="volume-label">Conservador</div>
-                            </div>
-                            <div class="volume-item volume-fast">
-                                <div class="volume-value">0.05</div>
-                                <div class="volume-label">Médio</div>
-                            </div>
-                            <div class="volume-item volume-fast">
-                                <div class="volume-value">0.10</div>
-                                <div class="volume-label">Agressivo</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="info-section">
-                        <div class="section-title section-title-fast">
-                            <span>🛡️</span> SISTEMA DE PROTEÇÕES
-                        </div>
-                        <div class="protecoes-grid">
-                            <div class="protecao-item">
-                                <div class="protecao-numero protecao-numero-fast">80</div>
-                                <div class="protecao-desc">Níveis de proteção</div>
-                            </div>
-                            <div class="protecao-item">
-                                <div class="protecao-numero protecao-numero-fast">60s</div>
-                                <div class="protecao-desc">Entre proteções</div>
-                            </div>
-                        </div>
-                        <div style="color: #fecaca; font-size: 0.9em; margin-top: 12px; text-align: center;">
-                            Distâncias: 1.880 até 47.330 pips
-                        </div>
-                    </div>
-                    
-                    <div class="highlight-box highlight-box-fast">
-                        <div class="highlight-text">
-                            <strong>⚡ FILTROS ESTRATÉGICOS:</strong> S/R Completo • Modo 20 Horas (00:00-20:00) • Detecção de GAP • Abertura Múltipla de Proteções
-                        </div>
-                        <div style="margin-top: 15px; color: #fecaca; font-weight: 500; font-size: 0.9em;">
-                            Com 0.01 inicial → volume máximo de apenas 0.64 mesmo com 80 proteções
-                        </div>
-                    </div>
-                    
-                    <div class="modos-container">
-                        <div class="modos-title">
-                            <span>⚙️</span> MODOS DE OPERAÇÃO
-                        </div>
-                        <div class="modos-grid">
-                            <div class="modo-card">🔵 APENAS COMPRAS</div>
-                            <div class="modo-card">🔴 APENAS VENDAS</div>
-                            <div class="modo-card">🔄 ALTERNADO</div>
-                            <div class="modo-card">⚡ DUAL TP GLOBAL <span class="badge-dual">SIMULTÂNEO</span></div>
-                        </div>
-                    </div>
-                </div>
+            <!-- 4.0 DUAL TP -->
+            <div class="robot-card card-pro">
+                <div class="robot-header"><span class="robot-name">🔥 4.0 DUAL TP</span><span class="badge"><i class="fas fa-crown"></i> seletivo</span></div>
+                <div class="gain-target" style="border-left-color: #f9c74f;"><p><span class="gain-big">10 → 20 → 50USD</span></p><div class="meta-diaria"><i class="fas fa-calendar-day"></i> ganho por dia</div></div>
+                <div class="banca"><i class="fas fa-chart-line"></i> Banca: $100 / $200 / $350</div>
+                <ul class="features"><li><i class="fas fa-check-circle"></i> Menos entradas · seletividade</li><li><i class="fas fa-code-branch"></i> 4 modos de operação</li><li><i class="fas fa-chart-bar"></i> Filtro S/R completo</li></ul>
+                <a href="https://drive.google.com/drive/folders/1x-kCcrwVTlPHtptBcKeK84Oxze13rafI" target="_blank" class="video-link"><i class="fas fa-play-circle"></i><span>Ver 4.0</span><i class="fas fa-chevron-right"></i></a>
+            </div>
+            <!-- 2.0 USD -->
+            <div class="robot-card card-usd">
+                <div class="robot-header"><span class="robot-name">RoboScalper 2.0 USD</span><span class="badge"><i class="fas fa-flag-checkered"></i> 5 trades/dia</span></div>
+                <div style="font-size:0.9rem; background:#1f2a40; padding:6px 12px; border-radius:40px; margin-bottom:6px; display:inline-block;"><i class="fas fa-building"></i> usado para mesas FTMO</div>
+                <div class="gain-target" style="border-left-color: #f9844a;"><p><span class="gain-big">+$50</span></p><div class="meta-diaria"><i class="fas fa-calendar-day"></i> meta diária</div></div>
+                <div class="banca"><i class="fas fa-chart-line"></i> Banca: $400 USD</div>
+                <ul class="features"><li><i class="fas fa-check-circle"></i> Limite 5 entradas/dia</li><li><i class="fas fa-filter"></i> Filtros avançados</li><li><i class="fas fa-stopwatch"></i> Stop Gain/Loss diário</li></ul>
+                <a href="https://drive.google.com/drive/folders/1x-kCcrwVTlPHtptBcKeK84Oxze13rafI" target="_blank" class="video-link"><i class="fas fa-play-circle"></i><span>Ver 2.0 USD</span><i class="fas fa-chevron-right"></i></a>
             </div>
         </div>
-        
-        <!-- FOOTER COMPARATIVO PROFISSIONAL -->
-        <div class="comparativo-footer">
-            <div class="footer-title">O que ambos compartilham</div>
-            
-            <div class="caracteristicas-grid">
-                <div class="caracteristica-col">
-                    <h3><span>⚡</span> TECNOLOGIA DUAL TP</h3>
-                    <ul>
-                        <li><span>✓</span> Dual TP Global - posições independentes</li>
-                        <li><span>✓</span> Detecção inteligente de GAP</li>
-                        <li><span>✓</span> Abertura múltipla de proteções</li>
-                        <li><span>✓</span> Proteções automáticas por volume</li>
-                    </ul>
+
+        <!-- ===== SEÇÃO CLIENTES COM MODAL ===== -->
+        <div class="client-section">
+            <div class="section-header">
+                <h2><i class="fas fa-users" style="margin-right: 10px;"></i> CLIENTES REAIS</h2>
+                <p><i class="fab fa-telegram-plane"></i> Clique nas imagens para ampliar</p>
+            </div>
+
+            <div class="testimonial-carousel" id="testimonialCarousel">
+                <!-- Imagem 1 -->
+                <div class="testimonial-card" onclick="openModal('https://images.weserv.nl/?url=https://drive.google.com/uc?id=1of9Lovx4YgRIm0IGsUKY1L2yQxI_n7vI', 'Lucro +$42 (FAST) · 17/03/2026')">
+                    <div class="client-image">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1of9Lovx4YgRIm0IGsUKY1L2yQxI_n7vI" alt="Resultado cliente 1">
+                    </div>
+                    <div class="client-meta"><i class="fas fa-trophy"></i> Lucro +$9 (FAST)</div>
+                    <p>"Começando com 25 dolares."</p>
+                    <div class="client-date"><i class="far fa-calendar-alt"></i> 17/03/2026</div>
                 </div>
-                
-                <div class="caracteristica-col">
-                    <h3><span>📊</span> RECURSOS PROFISSIONAIS</h3>
-                    <ul>
-                        <li><span>✓</span> Dashboard futurista em tempo real</li>
-                        <li><span>✓</span> Stop Gain / Stop Loss configuráveis</li>
-                        <li><span>✓</span> Verificação de licença por URL</li>
-                        <li><span>✓</span> Magic Number exclusivo</li>
-                    </ul>
+
+                <!-- Imagem 2 -->
+                <div class="testimonial-card" onclick="openModal('https://images.weserv.nl/?url=https://drive.google.com/uc?id=11zZpuyz19LnzoVS41JrznqopbZfHfTCb', '4.0 Dual TP · +$58 · 16/03/2026')">
+                    <div class="client-image">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=11zZpuyz19LnzoVS41JrznqopbZfHfTCb" alt="Resultado cliente 2">
+                    </div>
+                    <div class="client-meta"><i class="fas fa-bolt"></i> 4.0 Dual TP · +$49 diarios</div>
+                    <p>"Mais um dia positivo operando e resultado consistente"</p>
+                    <div class="client-date"><i class="far fa-calendar-alt"></i> 16/03/2026</div>
+                </div>
+
+                <!-- Imagem 3 -->
+                <div class="testimonial-card" onclick="openModal('https://images.weserv.nl/?url=https://drive.google.com/uc?id=1ZEbKORDvE11rQho4zqGikyE6M0SjkBvg', '2.0 USD · +$50 exatos · 15/03/2026')">
+                    <div class="client-image">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1ZEbKORDvE11rQho4zqGikyE6M0SjkBvg" alt="Resultado cliente 3">
+                    </div>
+                    <div class="client-meta"><i class="fas fa-dollar-sign"></i> 4.0 · +$80 exatos</div>
+                    <p>"Meta diária batida em menos de 2 horas. Robô perfeito para contas FTMO."</p>
+                    <div class="client-date"><i class="far fa-calendar-alt"></i> 15/03/2026</div>
+                </div>
+
+                <!-- Imagem 4 -->
+                <div class="testimonial-card" onclick="openModal('https://images.weserv.nl/?url=https://drive.google.com/uc?id=1jSIiYwqD2G9q9kpoHkewfDYbiGFyxtM6', 'FAST · $63 no dia · 14/03/2026')">
+                    <div class="client-image">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1jSIiYwqD2G9q9kpoHkewfDYbiGFyxtM6" alt="Resultado cliente 4">
+                    </div>
+                    <div class="client-meta"><i class="fas fa-chart-line"></i> FAST · $64 no dia</div>
+                    <p>"Proteções funcionaram perfeitamente. Mesmo com gap o robô abriu tudo sozinho."</p>
+                    <div class="client-date"><i class="far fa-calendar-alt"></i> 14/03/2026</div>
+                </div>
+
+                <!-- Imagem 5 -->
+                <div class="testimonial-card" onclick="openModal('https://images.weserv.nl/?url=https://drive.google.com/uc?id=15ZEIoG8V6xf-WN8Y_vwqTIST18zZjOoq', '4.0 · +$40 (banca $350) · 13/03/2026')">
+                    <div class="client-image">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=15ZEIoG8V6xf-WN8Y_vwqTIST18zZjOoq" alt="Resultado cliente 5">
+                    </div>
+                    <div class="client-meta"><i class="fas fa-crown"></i> 4.0 · +$27</div>
+                    <p>"Exatamente o gain que eu esperava. Robô silencioso, só entra quando deve."</p>
+                    <div class="client-date"><i class="far fa-calendar-alt"></i> 13/03/2026</div>
+                </div>
+
+                <!-- Imagem 6 -->
+                <div class="testimonial-card" onclick="openModal('https://images.weserv.nl/?url=https://drive.google.com/uc?id=11WaCmY_b0qQpEnyHY-R9kPRnfzL7fQ0p', '2.0 USD · $55 lucro · 12/03/2026')">
+                    <div class="client-image">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=11WaCmY_b0qQpEnyHY-R9kPRnfzL7fQ0p" alt="Resultado cliente 6">
+                    </div>
+                    <div class="client-meta"><i class="fas fa-shield"></i> 4.0 USD · $26 lucro</div>
+                    <p>"Stop Loss por pips salvou uma operação, depois recuperou e ainda deu gain."</p>
+                    <div class="client-date"><i class="far fa-calendar-alt"></i> 12/03/2026</div>
+                </div>
+
+                <!-- Imagem 7 -->
+                <div class="testimonial-card" onclick="openModal('https://images.weserv.nl/?url=https://drive.google.com/uc?id=1n6RabJyzbfzDMxQNNPR2Slw5wiw3CQC9', 'FAST · 20h operando · 11/03/2026')">
+                    <div class="client-image">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1n6RabJyzbfzDMxQNNPR2Slw5wiw3CQC9" alt="Resultado cliente 7">
+                    </div>
+                    <div class="client-meta"><i class="fas fa-clock"></i> USD e Mesa 10$</div>
+                    <p>"Resultado diário consistente banca baixa pra quem quer segurança."</p>
+                    <div class="client-date"><i class="far fa-calendar-alt"></i> 11/03/2026</div>
+                </div>
+
+                <!-- Imagem 8 -->
+                <div class="testimonial-card" onclick="openModal('https://images.weserv.nl/?url=https://drive.google.com/uc?id=1wofOnVOr8jiUdFYzdokFmXSlQq8eSLMA', 'Cliente 5 estrelas · 10/03/2026')">
+                    <div class="client-image">
+                        <img src="https://images.weserv.nl/?url=https://drive.google.com/uc?id=1wofOnVOr8jiUdFYzdokFmXSlQq8eSLMA" alt="Resultado cliente 8">
+                    </div>
+                    <div class="client-meta"><i class="fas fa-star"></i> Cliente 5 estrelas</div>
+                    <p>"Já recuperando o investimento em 3 dias."</p>
+                    <div class="client-date"><i class="far fa-calendar-alt"></i> 10/03/2026</div>
                 </div>
             </div>
-            
-            <div style="text-align: center; margin-top: 40px; color: #8f9bb3; font-size: 0.9em; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 30px;">
-                SCALPER TRADING SYSTEMS • 2026 • Escolha seu perfil: <strong style="color: #93c5fd;">PRO 4.0</strong> para consistência cirúrgica | <strong style="color: #fecaca;">FAST</strong> para alta frequência com segurança
+
+            <!-- Botão extra para o Telegram -->
+            <div style="text-align: center; margin-top: 20px;">
+                <a href="https://t.me/+Nq0cz0CVbxowY2Q5" target="_blank" style="background:#1e3a5f; color:white; padding:12px 24px; border-radius:60px; text-decoration:none; display:inline-flex; align-items:center; gap:10px; font-weight:600;">
+                    <i class="fab fa-telegram-plane" style="font-size:1.4rem;"></i> VEJA MAIS RESULTADOS NO GRUPO
+                </a>
+            </div>
+        </div>
+
+        <!-- Botão CTA principal -->
+        <a href="https://t.me/+Nq0cz0CVbxowY2Q5" target="_blank" class="cta-button">
+            <i class="fab fa-telegram-plane"></i> QUERO GANHAR COM OS ROBÔS <i class="fas fa-arrow-right"></i>
+        </a>
+
+        <!-- Rodapé -->
+        <div class="footer-note">
+            <p><i class="fas fa-robot"></i> Scalper PRO family — escolha seu perfil:</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; margin: 10px 0;">
+                <span style="background:#1d2b3c; padding:5px 12px; border-radius:30px;">⚡ FAST: 0.01 → 0.64</span>
+                <span style="background:#1d2b3c; padding:5px 12px; border-radius:30px;">🔥 4.0: seletivo / gap</span>
+                <span style="background:#1d2b3c; padding:5px 12px; border-radius:30px;">💵 2.0 USD: FTMO / 5 trades</span>
+            </div>
+            <div class="disclaimer">
+                <i class="fas fa-exclamation-triangle" style="margin-right:6px;"></i>Resultados passados não garantem lucros futuros. Trading envolve riscos. Valores são metas diárias em USD; a corretora opera em USC (100 USC = $1 USD).
             </div>
         </div>
     </div>
+
+    <!-- Modal para imagens ampliadas -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <img id="modalImage" src="" alt="Imagem ampliada">
+            <div id="modalCaption" class="modal-caption"></div>
+        </div>
+    </div>
+
+    <script>
+        // Função para abrir o modal com a imagem clicada
+        function openModal(imageSrc, caption) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const modalCaption = document.getElementById('modalCaption');
+            
+            modalImg.src = imageSrc;
+            modalCaption.textContent = caption;
+            modal.classList.add('active');
+            
+            // Impede rolagem do fundo
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Função para fechar o modal
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Fecha o modal com a tecla ESC
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
 </body>
 </html>
