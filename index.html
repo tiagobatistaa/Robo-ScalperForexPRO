@@ -220,6 +220,59 @@
             font-size: 1.2rem;
             min-width: 22px;
         }
+        
+        /* Estilo para a prévia do YouTube */
+        .youtube-preview {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #1a2538;
+            border-radius: 60px;
+            padding: 8px 16px 8px 8px;
+            margin: 18px 0 8px;
+            border: 1px solid #3a4a6b;
+            transition: all 0.2s;
+            text-decoration: none;
+            color: white;
+        }
+        
+        .youtube-preview:hover {
+            background: #253b55;
+            border-color: #ff4d4d;
+            transform: translateY(-2px);
+        }
+        
+        .youtube-icon {
+            background: #ff4d4d;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        .youtube-preview .video-info {
+            flex: 1;
+        }
+        
+        .youtube-preview .video-info .video-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+        
+        .youtube-preview .video-info .video-desc {
+            font-size: 0.7rem;
+            color: #aabbdd;
+        }
+        
+        .youtube-preview .play-icon {
+            color: #ff4d4d;
+            font-size: 1.3rem;
+        }
+        
         .video-link {
             display: flex;
             align-items: center;
@@ -227,7 +280,7 @@
             background: #1f2c40;
             padding: 14px 18px;
             border-radius: 60px;
-            margin: 18px 0 4px;
+            margin: 8px 0 4px;
             text-decoration: none;
             color: white;
             border: 1px solid #374b70;
@@ -531,15 +584,37 @@
                 <div class="gain-target" style="border-left-color: #6cd4b2;"><p><span class="gain-big">6 → 20 → 60USD</span></p><div class="meta-diaria"><i class="fas fa-calendar-day"></i> ganhos por dia</div></div>
                 <div class="banca"><i class="fas fa-chart-line"></i> Banca: $50 / $170 / $300</div>
                 <ul class="features"><li><i class="fas fa-check-circle"></i> Entradas infinitas · 4 modos</li><li><i class="fas fa-shield-alt"></i> 80 níveis de proteção</li><li><i class="fas fa-clock"></i> 20h/dia (00:00–20:00)</li></ul>
-                <a href="https://drive.google.com/drive/folders/1x-kCcrwVTlPHtptBcKeK84Oxze13rafI" target="_blank" class="video-link"><i class="fas fa-play-circle"></i><span>Ver FAST</span><i class="fas fa-chevron-right"></i></a>
+                
+                <!-- Caixa de vídeo do YouTube para FAST -->
+                <a href="https://youtu.be/YUAcmkbP2uI" target="_blank" class="youtube-preview">
+                    <div class="youtube-icon"><i class="fab fa-youtube"></i></div>
+                    <div class="video-info">
+                        <div class="video-title">⚡ ROBÔ FAST COMPLETO</div>
+                        <div class="video-desc">20h/dia · 80 proteções · metas diárias</div>
+                    </div>
+                    <i class="fas fa-play-circle play-icon"></i>
+                </a>
+                
+                <a href="https://drive.google.com/drive/folders/1x-kCcrwVTlPHtptBcKeK84Oxze13rafI" target="_blank" class="video-link"><i class="fas fa-play-circle"></i><span>Ver + vídeos do FAST</span><i class="fas fa-chevron-right"></i></a>
             </div>
             <!-- 4.0 DUAL TP -->
             <div class="robot-card card-pro">
                 <div class="robot-header"><span class="robot-name">🔥 4.0 DUAL TP</span><span class="badge"><i class="fas fa-crown"></i> seletivo</span></div>
-                <div class="gain-target" style="border-left-color: #f9c74f;"><p><span class="gain-big">10 → 20 → 50USD</span></p><div class="meta-diaria"><i class="fas fa-calendar-day"></i> ganho por dia</div></div>
+                <div class="gain-target" style="border-left-color: #f9c74f;"><p><span class="gain-big">10 → 20 → 50USD</span></p><div class="meta-diaria"><i class="fas fa-calendar-day"></i> ganhos por dia</div></div>
                 <div class="banca"><i class="fas fa-chart-line"></i> Banca: $100 / $200 / $350</div>
                 <ul class="features"><li><i class="fas fa-check-circle"></i> Menos entradas · seletividade</li><li><i class="fas fa-code-branch"></i> 4 modos de operação</li><li><i class="fas fa-chart-bar"></i> Filtro S/R completo</li></ul>
-                <a href="https://drive.google.com/drive/folders/1x-kCcrwVTlPHtptBcKeK84Oxze13rafI" target="_blank" class="video-link"><i class="fas fa-play-circle"></i><span>Ver 4.0</span><i class="fas fa-chevron-right"></i></a>
+                
+                <!-- Caixa de vídeo do YouTube para 4.0 DUAL TP -->
+                <a href="https://youtu.be/lsXRIau4UlI" target="_blank" class="youtube-preview">
+                    <div class="youtube-icon"><i class="fab fa-youtube"></i></div>
+                    <div class="video-info">
+                        <div class="video-title">🔥 4.0 DUAL TP SELETIVO</div>
+                        <div class="video-desc">Menos entradas · filtro S/R · precisão</div>
+                    </div>
+                    <i class="fas fa-play-circle play-icon"></i>
+                </a>
+                
+                <a href="https://drive.google.com/drive/folders/1x-kCcrwVTlPHtptBcKeK84Oxze13rafI" target="_blank" class="video-link"><i class="fas fa-play-circle"></i><span>Ver + vídeos do 4.0</span><i class="fas fa-chevron-right"></i></a>
             </div>
             <!-- 2.0 USD -->
             <div class="robot-card card-usd">
@@ -548,7 +623,18 @@
                 <div class="gain-target" style="border-left-color: #f9844a;"><p><span class="gain-big">+$50</span></p><div class="meta-diaria"><i class="fas fa-calendar-day"></i> meta diária</div></div>
                 <div class="banca"><i class="fas fa-chart-line"></i> Banca: $400 USD</div>
                 <ul class="features"><li><i class="fas fa-check-circle"></i> Limite 5 entradas/dia</li><li><i class="fas fa-filter"></i> Filtros avançados</li><li><i class="fas fa-stopwatch"></i> Stop Gain/Loss diário</li></ul>
-                <a href="https://drive.google.com/drive/folders/1x-kCcrwVTlPHtptBcKeK84Oxze13rafI" target="_blank" class="video-link"><i class="fas fa-play-circle"></i><span>Ver 2.0 USD</span><i class="fas fa-chevron-right"></i></a>
+                
+                <!-- Caixa de vídeo do YouTube para 2.0 USD -->
+                <a href="https://youtu.be/0dicyLT37X8" target="_blank" class="youtube-preview">
+                    <div class="youtube-icon"><i class="fab fa-youtube"></i></div>
+                    <div class="video-info">
+                        <div class="video-title">💵 2.0 USD FTMO</div>
+                        <div class="video-desc">5 trades/dia · meta $50 · stop automático</div>
+                    </div>
+                    <i class="fas fa-play-circle play-icon"></i>
+                </a>
+                
+                <a href="https://drive.google.com/drive/folders/1x-kCcrwVTlPHtptBcKeK84Oxze13rafI" target="_blank" class="video-link"><i class="fas fa-play-circle"></i><span>Ver + vídeos do 2.0 USD</span><i class="fas fa-chevron-right"></i></a>
             </div>
         </div>
 
